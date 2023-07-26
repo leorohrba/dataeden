@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from dataeden_site.storage import NginxStorage
+from django.contrib.staticfiles.storage import FileSystemStorage
 import os
 import sys
 
@@ -42,7 +43,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # STATICFILES_DIRS = ('static',)
 
-STATICFILES_STORAGE = 'dataeden_site.storage.NginxStorage'
+if os.environ.get('APP_ENV') == 'github':
+    STATICFILES_STORAGE = FileSystemStorage(location='static')
+    DEBUG = False
+else:
+    STATICFILES_STORAGE = 'dataeden_site.storage.NginxStorage'
+    DEBUG = True
 
 VENV_PATH = os.path.dirname(BASE_DIR)
 STATIC_ROOT = os.path.join(VENV_PATH, 'static_root')
