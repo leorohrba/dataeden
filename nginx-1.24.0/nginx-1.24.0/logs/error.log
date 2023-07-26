@@ -1,0 +1,28 @@
+2023/07/26 09:22:56 [notice] 14664#18712: signal process started
+2023/07/26 09:26:32 [notice] 12336#15224: signal process started
+2023/07/26 09:30:35 [error] 23768#1172: *1 CreateFile() "C:\Users\leoro\Downloads\nginx-1.24.0\nginx-1.24.0/html/nginx_status" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /nginx_status HTTP/1.1", host: "localhost"
+2023/07/26 09:30:36 [error] 23768#1172: *1 CreateFile() "C:\Users\leoro\Downloads\nginx-1.24.0\nginx-1.24.0/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/nginx_status"
+2023/07/26 09:30:56 [error] 23768#1172: *2 CreateFile() "C:\Users\leoro\Downloads\nginx-1.24.0\nginx-1.24.0/html/nginx_status" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /nginx_status HTTP/1.1", host: "127.0.0.1"
+2023/07/26 09:30:56 [error] 23768#1172: *2 CreateFile() "C:\Users\leoro\Downloads\nginx-1.24.0\nginx-1.24.0/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "127.0.0.1", referrer: "http://127.0.0.1/nginx_status"
+2023/07/26 09:36:48 [emerg] 25488#11400: "location" directive is not allowed here in C:\Users\leoro\Downloads\nginx-1.24.0\nginx-1.24.0/conf/nginx.conf:16
+2023/07/26 09:38:02 [emerg] 13088#12048: "location" directive is not allowed here in C:\Users\leoro\Downloads\nginx-1.24.0\nginx-1.24.0/conf/nginx.conf:128
+2023/07/26 09:39:29 [notice] 28368#15456: signal process started
+2023/07/26 09:39:33 [error] 23768#1172: *3 CreateFile() "C:\Users\leoro\Downloads\nginx-1.24.0\nginx-1.24.0/html/nginx_status" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /nginx_status HTTP/1.1", host: "127.0.0.1"
+2023/07/26 09:41:56 [notice] 14712#5916: signal process started
+2023/07/26 09:42:03 [error] 23768#1172: *4 CreateFile() "C:\Users\leoro\Downloads\nginx-1.24.0\nginx-1.24.0/html/nginx_status" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /nginx_status HTTP/1.1", host: "127.0.0.1"
+2023/07/26 09:42:04 [error] 23768#1172: *4 CreateFile() "C:\Users\leoro\Downloads\nginx-1.24.0\nginx-1.24.0/html/nginx_status" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /nginx_status HTTP/1.1", host: "127.0.0.1"
+2023/07/26 09:42:14 [error] 23768#1172: *4 CreateFile() "C:\Users\leoro\Downloads\nginx-1.24.0\nginx-1.24.0/html/static" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /static HTTP/1.1", host: "127.0.0.1"
+2023/07/26 09:43:42 [error] 23768#1172: *5 CreateFile() "C:\Users\leoro\Downloads\nginx-1.24.0\nginx-1.24.0/html/nginx_status" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /nginx_status HTTP/1.1", host: "localhost"
+2023/07/26 09:43:52 [error] 23768#1172: *5 CreateFile() "C:\Users\leoro\Downloads\nginx-1.24.0\nginx-1.24.0/html/nginx_status" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /nginx_status HTTP/1.1", host: "localhost"
+2023/07/26 09:52:19 [notice] 3644#2872: signal process started
+2023/07/26 09:52:26 [error] 23768#1172: *6 CreateFile() "C:\Users\leoro\Downloads\nginx-1.24.0\nginx-1.24.0/html/nginx_status" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /nginx_status HTTP/1.1", host: "localhost"
+2023/07/26 09:54:11 [notice] 18148#3872: signal process started
+2023/07/26 09:54:18 [error] 23768#1172: *7 CreateFile() "C:\Users\leoro\Downloads\nginx-1.24.0\nginx-1.24.0/html/nginx_status" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /nginx_status HTTP/1.1", host: "localhost"
+2023/07/26 10:22:57 [emerg] 30256#1216: the unix domain sockets are not supported on this platform in upstream "unix:C:\DataEden\dataeden_site\dataeden.sock" in C:\Users\leoro\Downloads\nginx-1.24.0\nginx-1.24.0/conf/nginx.conf:49
+2023/07/26 10:24:55 [emerg] 21248#17604: invalid host in upstream "http://localhost:8000" in C:\Users\leoro\Downloads\nginx-1.24.0\nginx-1.24.0/conf/nginx.conf:49
+2023/07/26 10:27:31 [emerg] 33540#24088: invalid host in upstream "http://127.0.0.1:8000" in C:\Users\leoro\Downloads\nginx-1.24.0\nginx-1.24.0/conf/nginx.conf:49
+2023/07/26 10:28:03 [notice] 5596#7028: signal process started
+2023/07/26 10:28:08 [error] 23768#1172: *8 CreateFile() "C:\Users\leoro\Downloads\nginx-1.24.0\nginx-1.24.0/html/nginx_status" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /nginx_status HTTP/1.1", host: "localhost"
+2023/07/26 10:28:09 [error] 23768#1172: *8 CreateFile() "C:\Users\leoro\Downloads\nginx-1.24.0\nginx-1.24.0/html/nginx_status" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /nginx_status HTTP/1.1", host: "localhost"
+2023/07/26 10:54:47 [notice] 6112#31652: signal process started
+2023/07/26 11:18:30 [notice] 18356#7528: signal process started
