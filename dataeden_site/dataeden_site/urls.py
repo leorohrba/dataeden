@@ -14,19 +14,35 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.contrib import admin
-from django.urls import include, path
-from django.conf.urls.static import static
-# from django.contrib.staticfiles import views
-# from django.conf import settings
-# from django.conf.urls import static
-# from django.contrib.staticfiles import staticfiles_urlpatterns
+from django.urls import include, path, re_path
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls.i18n import i18n_patterns
+# from pages.views import switch_language
+# from django.views.i18n import set_language
+# from pages.views import index
 
 urlpatterns = [
+    path("__debug__/", include("debug_toolbar.urls")),
     path('admin/', admin.site.urls),
-    path("", include("pages.urls")),
-    # path('static/<path:file>', views.serve, name='static'),
     path('static/', include('django.contrib.staticfiles.urls')),
-    # path(r'^static/(?P<path>.*)$', staticfiles_urlpatterns),
-    # url(r'^static/(?P<path>.*)$', staticfiles_urlpatterns(settings.STATIC_URL)),
+    path('', include('pages.urls', namespace='pages')),
+] 
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += [
+    re_path(r'^rosetta/', include('rosetta.urls'))
 ]
+# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+# urlpatterns += i18n_patterns(
+    # re_path(r'^(?P<language_code>[-\w]+)/i18n/setlang/$', set_language, name='set_language'),
+    # re_path(r'^(?P<language_code>[-\w]+)/$', set_language, name='set_language'),
+    
+    # adicionar codigo da lingua na url
+    # path('i18n/', include('django.conf.urls.i18n')),
+    # path('', include('pages.urls', namespace='pages')),
+    # path('<str:language_code>/', include('pages.urls')),
+    
+    # path('static/', include('django.contrib.staticfiles.urls')),
+# )

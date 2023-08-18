@@ -26,3 +26,6 @@
 2023/07/26 10:28:09 [error] 23768#1172: *8 CreateFile() "C:\Users\leoro\Downloads\nginx-1.24.0\nginx-1.24.0/html/nginx_status" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /nginx_status HTTP/1.1", host: "localhost"
 2023/07/26 10:54:47 [notice] 6112#31652: signal process started
 2023/07/26 11:18:30 [notice] 18356#7528: signal process started
+2023/07/27 15:41:50 [notice] 37804#27948: signal process started
+2023/07/27 16:54:39 [notice] 21436#27416: signal process started
+2023/07/27 16:54:39 [error] 21436#27416: CreateFile() "C:\dataeden\nginx-1.24.0/logs/nginx.pid" failed (2: The system cannot find the file specified)

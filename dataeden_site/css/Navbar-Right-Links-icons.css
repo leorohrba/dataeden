@@ -48,10 +48,12 @@
 }
 
 .bs-icon.bs-icon-rounded {
+  background: #50b049;
   border-radius: .5rem;
 }
 
 .bs-icon.bs-icon-circle {
+  background: #50b049;
   border-radius: 50%;
 }
 
