@@ -1,0 +1,24 @@
+// required to get $orange variable
+@import "../bootstrap/scss/functions"; 
+@import "../bootstrap/scss/variables";
+
+// set your new color
+$green: #50b049;
+
+$primary: $green; // set the $primary variable
+
+// merge with existing $theme-colors map
+$theme-colors: map-merge($theme-colors, (
+  "primary": $primary
+));
+
+.btn {
+  --bs-btn-color: #ffffff;
+  // --bs-btn-hover-color: darken(#ffffff, 5%);
+  &:hover {
+    color: darken($white,5%);
+  }
+}
+
+// set changes
+@import "../bootstrap/scss/bootstrap";

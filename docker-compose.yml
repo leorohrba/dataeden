@@ -1,0 +1,71 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    command: 
+      - /bin/sh
+      - '-c'
+      - '/app/migrate.sh'
+    container_name: docker_django
+    hostname: docker_django
+    volumes:
+      - .:/dataeden_site
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - djangonetwork
+
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    expose:
+      - 5432
+    container_name: "db"
+    user: postgres
+    hostname: "db"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: dataeden
+      POSTGRES_DB: postgres
+      PGUSER: postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready", "-d", "db"]
+      interval: 30s
+      timeout: 60s
+      retries: 5
+      start_period: 80s
+    ports:
+      - 5432:5432
+    networks:
+      - djangonetwork
+      # djangonetwork:
+      #   ipv4_address: 11.23.34.78
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "leorohrbacher@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: dataeden
+      PGADMIN_LISTEN_PORT: 5050
+    ports:
+      - "5050:5050"
+    depends_on:
+      - db
+    networks:
+      - djangonetwork
+
+networks:
+  djangonetwork:
+    # external: true
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "11.23.34.0/24"
+          gateway: "11.23.34.1"
+
+volumes:
+  postgres_data:
