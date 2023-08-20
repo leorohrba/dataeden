@@ -33,11 +33,12 @@ LANGUAGE_CODE = 'en'
 LANGUAGES = [
     ('en', _('English')),
     ('pt-BR', _('Portuguese')),
+    # ('pt-br', _('Portuguese')),
 ]
 
 LANGUAGE_MAP = {
     'en': 'us',  # Example: 'US' country code maps to English language
-    'pt-BR': 'br',  # Example: 'BR' country code maps to Portuguese language
+    'pt-br': 'br',  # Example: 'BR' country code maps to Portuguese language
     # Add more country code to language mappings as needed
 }
 
@@ -177,6 +178,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.i18n',
                 'django.contrib.messages.context_processors.messages',
                 'pages.context_preprocessor.languages',
             ],
@@ -235,7 +237,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'noreply.dataeden@gmail.com'
-EMAIL_HOST_PASSWORD = 'afszkknjzrjnxsgg'
+EMAIL_HOST_PASSWORD = 'wcngloezexdnsjge'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 

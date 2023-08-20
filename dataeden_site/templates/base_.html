@@ -69,6 +69,45 @@
                             {% endfor %}
                         </ul>
                     </div>
+                    <li class="nav-item" style="font-family: readex pro;">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                {% get_language_info for request.LANGUAGE_CODE as lang_info %}
+                                {% with country_code=LANGUAGE_MAP.request.LANGUAGE_CODE %}
+                                    <i class="flag-icon flag-icon-{{ country_code|lower }}"></i> {{ lang_info.name_local }}
+                                {% endwith %}
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                                <li>
+                                    <form action="{% url 'pages:set_language' %}" method="post">{% csrf_token %}
+                                        <input name="next" type="hidden" value="{{ redirect_to }}">
+                                        <select name="language">
+                                            {% get_current_language as LANGUAGE_CODE %}
+                                            {% get_available_languages as LANGUAGES %}
+                                            {% for lang_code, lang_name in LANGUAGES %}
+                                            <option value="{{ lang_code|lower }}" {% if lang_code|lower == LANGUAGE_CODE %}selected{% endif %}>
+                                                {{ lang_name }} ({{ lang_code }})
+                                            </option>
+                                        {% endfor %}
+                                        </select>
+                                        <input type="submit" value="Go">
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <form action="{% url 'pages:set_language' %}" method="post">
+                        {% csrf_token %}
+                        <label for="language-selector">Select Language:</label>
+                        <select id="language-selector" name="language" onchange="this.form.submit()">
+                            <option value="" disabled selected>Select a language</option>
+                            {% for lang_code, lang_name in LANGUAGES %}
+                                <option value="{{ lang_code }}" {% if lang_code == LANGUAGE_CODE %}selected{% endif %}>
+                                    {{ lang_name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </form>
                 </ul>
             </div>
         </div>

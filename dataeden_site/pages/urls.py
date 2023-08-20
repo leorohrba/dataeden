@@ -1,5 +1,5 @@
 from django.urls import path
-
+from django.views.i18n import set_language
 from .views import index, register_email, success, contact, change_language
 # , about_us, base
 
@@ -8,10 +8,13 @@ urlpatterns = [
     path("", index, name="index"),
     # path('set_language/<str:language_code>/', change_language, name='set_language'),
     path('set_language/', change_language, name='set_language'),
+    # path('set_language/',  set_language(), name='set_language'),
     path("index/", index, name="index"),
     path("contact/", contact, name="contact"),
     path("email/", register_email, name='registerEmail'),
-    path("success/", success, name='success'),
+    path('success/<str:method>/', success, name='success'),
+    # path('<str:language_code>/success/<str:method>/', success, name='success'),
+    # path("success/", success, name='success'),
 ]
 
 # Replace 'YOUR_API_KEY' with your actual ipstack API key

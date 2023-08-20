@@ -27,12 +27,13 @@ urlpatterns = [
     path("__debug__/", include("debug_toolbar.urls")),
     path('admin/', admin.site.urls),
     path('static/', include('django.contrib.staticfiles.urls')),
-    path('', include('pages.urls', namespace='pages')),
+    # path("i18n/", include("django.conf.urls.i18n")),
 ] 
 urlpatterns += staticfiles_urlpatterns()
-urlpatterns += [
-    re_path(r'^rosetta/', include('rosetta.urls'))
-]
+urlpatterns += i18n_patterns(
+    re_path(r'^rosetta/', include('rosetta.urls')),
+    path('', include('pages.urls', namespace='pages')),
+)
 # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 # urlpatterns += i18n_patterns(

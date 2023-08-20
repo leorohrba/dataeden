@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-16 13:04-0300\n"
+"POT-Creation-Date: 2023-08-18 12:48-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\dataeden_site\settings.py:220
+#: .\dataeden_site\settings.py:34
 msgid "English"
 msgstr "Inglês"
 
-#: .\dataeden_site\settings.py:221
+#: .\dataeden_site\settings.py:35
 msgid "Portuguese"
 msgstr "Português"
 
@@ -138,8 +138,9 @@ msgstr ""
 #: .\templates\admin\delete_confirmation.html:14
 #: .\templates\admin\delete_selected_confirmation.html:14
 #: .\templates\admin\invalid_setup.html:6
-#: .\templates\admin\object_history.html:6 .\templates\base.html:37
-#: .\templates\rosetta\file-list.html:7 .\templates\rosetta\form.html:21
+#: .\templates\admin\object_history.html:6 .\templates\base.html:46
+#: .\templates\base_.html:47 .\templates\rosetta\file-list.html:7
+#: .\templates\rosetta\form.html:21
 msgid "Home"
 msgstr ""
 
@@ -401,6 +402,7 @@ msgid " By %(filter_title)s "
 msgstr ""
 
 #: .\templates\admin\includes\object_delete_summary.html:2
+#: .\templates\debug_toolbar\panels\cache.html:2
 msgid "Summary"
 msgstr ""
 
@@ -467,6 +469,8 @@ msgid "User"
 msgstr ""
 
 #: .\templates\admin\object_history.html:24
+#: .\templates\debug_toolbar\panels\history.html:14
+#: .\templates\debug_toolbar\panels\sql.html:37
 msgid "Action"
 msgstr ""
 
@@ -550,23 +554,23 @@ msgstr ""
 msgid "View selected %(model)s"
 msgstr ""
 
-#: .\templates\base.html:38
+#: .\templates\base.html:47 .\templates\base_.html:48
 msgid "About Us"
 msgstr "Sobre nós"
 
-#: .\templates\base.html:39
+#: .\templates\base.html:48 .\templates\base_.html:49
 msgid "Contact"
 msgstr "Fale conosco"
 
-#: .\templates\base.html:41 .\templates\index.html:45
+#: .\templates\base.html:50 .\templates\base_.html:51 .\templates\index.html:45
 msgid "Register"
 msgstr "Registrar"
 
-#: .\templates\base.html:103
+#: .\templates\base.html:108 .\templates\base_.html:116
 msgid "Privacy Policy"
 msgstr "Política de Privacidade"
 
-#: .\templates\base.html:104
+#: .\templates\base.html:109 .\templates\base_.html:117
 msgid "Terms of Use"
 msgstr "Termos de Uso"
 
@@ -579,6 +583,7 @@ msgid "We are happy to offer help and respond any questions!"
 msgstr "Ficaremos felizes em oferecer ajuda e responder qualquer pergunta!"
 
 #: .\templates\contactForm.html:53
+#: .\templates\debug_toolbar\panels\versions.html:11
 msgid "Name"
 msgstr "Nome"
 
@@ -597,6 +602,417 @@ msgstr "Mensagem"
 #: .\templates\contactForm.html:57
 msgid "Send"
 msgstr "Enviar"
+
+#: .\templates\debug_toolbar\base.html:22
+#: .\templates\debug_toolbar\baseBkp.html:22
+msgid "Hide toolbar"
+msgstr ""
+
+#: .\templates\debug_toolbar\base.html:22
+#: .\templates\debug_toolbar\baseBkp.html:22
+msgid "Hide"
+msgstr ""
+
+#: .\templates\debug_toolbar\base.html:29
+#: .\templates\debug_toolbar\baseBkp.html:29
+msgid "Show toolbar"
+msgstr ""
+
+#: .\templates\debug_toolbar\includes\panel_button.html:4
+msgid "Disable for next and successive requests"
+msgstr ""
+
+#: .\templates\debug_toolbar\includes\panel_button.html:4
+msgid "Enable for next and successive requests"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\cache.html:6
+msgid "Total calls"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\cache.html:7
+msgid "Total time"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\cache.html:8
+msgid "Cache hits"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\cache.html:9
+msgid "Cache misses"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\cache.html:21
+msgid "Commands"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\cache.html:39
+msgid "Calls"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\cache.html:43
+#: .\templates\debug_toolbar\panels\sql.html:36
+msgid "Time (ms)"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\cache.html:44
+msgid "Type"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\cache.html:45
+#: .\templates\debug_toolbar\panels\request.html:8
+msgid "Arguments"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\cache.html:46
+#: .\templates\debug_toolbar\panels\request.html:9
+msgid "Keyword arguments"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\cache.html:47
+msgid "Backend"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\headers.html:3
+msgid "Request headers"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\headers.html:8
+#: .\templates\debug_toolbar\panels\headers.html:27
+#: .\templates\debug_toolbar\panels\headers.html:48
+msgid "Key"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\headers.html:9
+#: .\templates\debug_toolbar\panels\headers.html:28
+#: .\templates\debug_toolbar\panels\headers.html:49
+#: .\templates\debug_toolbar\panels\history_tr.html:23
+#: .\templates\debug_toolbar\panels\request_variables.html:12
+#: .\templates\debug_toolbar\panels\settings.html:6
+#: .\templates\debug_toolbar\panels\timer.html:11
+msgid "Value"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\headers.html:22
+msgid "Response headers"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\headers.html:41
+msgid "WSGI environ"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\headers.html:43
+msgid ""
+"Since the WSGI environ inherits the environment of the server, only a "
+"significant subset is shown below."
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\history.html:9
+#: .\templates\debug_toolbar\panels\sql_explain.html:11
+#: .\templates\debug_toolbar\panels\sql_profile.html:12
+#: .\templates\debug_toolbar\panels\sql_select.html:11
+msgid "Time"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\history.html:10
+msgid "Method"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\history.html:11
+#: .\templates\debug_toolbar\panels\staticfiles.html:43
+msgid "Path"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\history.html:12
+msgid "Request Variables"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\history.html:13
+msgid "Status"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\history_tr.html:22
+#: .\templates\debug_toolbar\panels\request_variables.html:11
+msgid "Variable"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\profiling.html:5
+msgid "Call"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\profiling.html:6
+msgid "CumTime"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\profiling.html:7
+#: .\templates\debug_toolbar\panels\profiling.html:9
+msgid "Per"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\profiling.html:8
+msgid "TotTime"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\profiling.html:10
+msgid "Count"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\request.html:3
+msgid "View information"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\request.html:7
+msgid "View function"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\request.html:10
+msgid "URL name"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\request.html:24
+msgid "Cookies"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\request.html:27
+msgid "No cookies"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\request.html:31
+msgid "Session data"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\request.html:34
+msgid "No session data"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\request.html:38
+msgid "GET data"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\request.html:41
+msgid "No GET data"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\request.html:45
+msgid "POST data"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\request.html:48
+msgid "No POST data"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\settings.html:5
+msgid "Setting"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\signals.html:5
+msgid "Signal"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\signals.html:6
+msgid "Receivers"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\sql.html:6
+#, python-format
+msgid "%(num)s query"
+msgid_plural "%(num)s queries"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\templates\debug_toolbar\panels\sql.html:8
+#, python-format
+msgid ""
+"including <abbr title=\"Similar queries are queries with the same SQL, but "
+"potentially different parameters.\">%(count)s similar</abbr>"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\sql.html:12
+#, python-format
+msgid ""
+"and <abbr title=\"Duplicate queries are identical to each other: they "
+"execute exactly the same SQL and parameters.\">%(dupes)s duplicates</abbr>"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\sql.html:34
+msgid "Query"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\sql.html:35
+#: .\templates\debug_toolbar\panels\timer.html:36
+msgid "Timeline"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\sql.html:52
+#, python-format
+msgid "%(count)s similar queries."
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\sql.html:58
+#, python-format
+msgid "Duplicated %(dupes)s times."
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\sql.html:95
+msgid "Connection:"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\sql.html:97
+msgid "Isolation level:"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\sql.html:100
+msgid "Transaction status:"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\sql.html:114
+msgid "(unknown)"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\sql.html:123
+msgid "No SQL queries were recorded during this request."
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\sql_explain.html:4
+msgid "SQL explained"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\sql_explain.html:9
+#: .\templates\debug_toolbar\panels\sql_profile.html:10
+#: .\templates\debug_toolbar\panels\sql_select.html:9
+msgid "Executed SQL"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\sql_explain.html:13
+#: .\templates\debug_toolbar\panels\sql_profile.html:14
+#: .\templates\debug_toolbar\panels\sql_select.html:13
+msgid "Database"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\sql_profile.html:4
+msgid "SQL profiled"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\sql_profile.html:37
+msgid "Error"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\sql_select.html:4
+msgid "SQL selected"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\sql_select.html:36
+msgid "Empty set"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\staticfiles.html:3
+msgid "Static file path"
+msgid_plural "Static file paths"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\templates\debug_toolbar\panels\staticfiles.html:7
+#, python-format
+msgid "(prefix %(prefix)s)"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\staticfiles.html:11
+#: .\templates\debug_toolbar\panels\staticfiles.html:22
+#: .\templates\debug_toolbar\panels\staticfiles.html:34
+#: .\templates\debug_toolbar\panels\templates.html:10
+#: .\templates\debug_toolbar\panels\templates.html:30
+#: .\templates\debug_toolbar\panels\templates.html:47
+msgid "None"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\staticfiles.html:14
+msgid "Static file app"
+msgid_plural "Static file apps"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\templates\debug_toolbar\panels\staticfiles.html:25
+msgid "Static file"
+msgid_plural "Static files"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\templates\debug_toolbar\panels\staticfiles.html:39
+#, python-format
+msgid "%(payload_count)s file"
+msgid_plural "%(payload_count)s files"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\templates\debug_toolbar\panels\staticfiles.html:44
+msgid "Location"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\template_source.html:4
+msgid "Template source:"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\templates.html:2
+msgid "Template path"
+msgid_plural "Template paths"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\templates\debug_toolbar\panels\templates.html:13
+msgid "Template"
+msgid_plural "Templates"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\templates\debug_toolbar\panels\templates.html:22
+#: .\templates\debug_toolbar\panels\templates.html:40
+msgid "Toggle context"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\templates.html:33
+msgid "Context processor"
+msgid_plural "Context processors"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\templates\debug_toolbar\panels\timer.html:2
+msgid "Resource usage"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\timer.html:10
+msgid "Resource"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\timer.html:26
+msgid "Browser timing"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\timer.html:35
+msgid "Timing attribute"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\timer.html:37
+msgid "Milliseconds since navigation start (+length)"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\versions.html:10
+msgid "Package"
+msgstr ""
+
+#: .\templates\debug_toolbar\panels\versions.html:12
+msgid "Version"
+msgstr ""
+
+#: .\templates\debug_toolbar\redirect.html:10
+msgid "Location:"
+msgstr ""
+
+#: .\templates\debug_toolbar\redirect.html:12
+msgid ""
+"The Django Debug Toolbar has intercepted a redirect to the above URL for "
+"debug viewing purposes. You can click the above link to continue with the "
+"redirect as normal."
+msgstr ""
 
 #: .\templates\index.html:12
 msgid "Coming soon..."
@@ -779,27 +1195,27 @@ msgid_plural "%(hits)s/%(message_number)s messages"
 msgstr[0] ""
 msgstr[1] ""
 
-#: .\templates\success.html:14
+#: .\templates\success.html:15
 msgid "Success!"
 msgstr "Sucesso!"
 
-#: .\templates\success.html:16
+#: .\templates\success.html:17
 msgid "You are at the start of something big!"
 msgstr "Você está no começo de algo grande!"
 
-#: .\templates\success.html:17
+#: .\templates\success.html:18
 msgid ""
 "Thank you for signing up for our waitlist. We'll be in touch soon to tell "
 "you the good news."
 msgstr ""
-"Obrigado por se inscrever em nossa waitlist. Entraremos em contato "
-"em breve para trazermos as novidades."
+"Obrigado por se inscrever em nossa waitlist. Entraremos em contato em breve "
+"para trazermos as novidades."
 
-#: .\templates\success.html:20
+#: .\templates\success.html:21
 msgid "Thank you for reaching out to us!"
 msgstr "Obrigado por entrar em contato conosco!"
 
-#: .\templates\success.html:21
+#: .\templates\success.html:22
 msgid ""
 "Our team will analyze your message. We'll be in touch as soon as possible."
 msgstr ""
