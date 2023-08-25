@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 from django.utils.translation import gettext_lazy as _
+# from django.core.cache.backends.memcached import MemcachedCache
+# from django_ratelimit import RateLimitMiddleware
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -57,15 +60,99 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_media/')
 #     # os.path.join(BASE_DIR, 'admin'),
 # ]
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static').replace("\\", "/"),
-    # os.path.join(BASE_DIR, 'staticfiles').replace("\\", "/"),
+    # os.path.join(BASE_DIR, 'static').replace("\\", "/"),
+    os.path.join(BASE_DIR, 'staticfiles').replace("\\", "/"),
+    os.path.join(BASE_DIR, 'static_media').replace("\\", "/"),
+    # os.path.join(BASE_DIR, 'staticfiles'),
+    # os.path.join(BASE_DIR, 'staticfiles/css'),
 ]
-COMPRESS_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# CACHES = {
+#     'default': {
+#         # 'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+#         'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
+#         # 'LOCATION': '127.0.0.1:11211',  # Use the service name from docker-compose.yml
+#         'LOCATION': 'memcached:11211',  # Use the service name from docker-compose.yml
+#     },
+#     'cache-for-ratelimiting': {},
+# }
+
+# COMPRESS_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+COMPRESS_ROOT = os.path.join(BASE_DIR, 'static_media/CACHE/')
+# COMPRESS_URL = STATIC_URL + 'CACHE/'
+COMPRESS_URL = STATIC_URL
+
+COMPRESS_OUTPUT_DIR = COMPRESS_ROOT
+
+
+# COMPRESS_URL = '/staticfiles/CACHE/'
+# COMPRESS_URL = '/static/'
+
+# COMPRESS_ROOT = STATIC_ROOT
+# COMPRESS_URL = STATIC_URL
+
+CACHES = {
+    "default": {
+        # "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis:6379/1",  # Use the service name from docker-compose.yml
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+COMPRESS_OFFLINE = True
+
+# RATELIMIT_USE_CACHE = 'cache-for-ratelimiting'
+
+# SESSIONS_ENGINE='django.contrib.sessions.backends.cache'
+# SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+# SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_CACHE_ALIAS = 'default'
 
 #DEVELOPMENT
-STATICFILES_STORAGE = 'dataeden_site.storage.FileSystemStorage'
+# STATICFILES_STORAGE = 'dataeden_site.storage.FileSystemStorage'
+# DEVELOPMENT ?
+# STATICFILES_STORAGE = 'compressor.storage.CompressedManifestStaticFilesStorage'
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    # "staticfiles": {
+    #     "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    # },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
 #PRODUCTION
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+COMPRESS_ENABLED = True
+COMPRESS_PRECOMPILERS = [
+    ('text/x-scss','django_libsass.SassCompiler'),
+    ('text/x-scss', 'sassc < {infile} {outfile}'),
+]
+MIDDLEWARE = [
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.cache.CacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'django_ratelimit.RateLimitMiddleware',
+    # 'django_ratelimit.middleware.RateLimitMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
 
 STATICFILES_CONTENT_TYPES = [
     ('text/css', 'css'),
@@ -98,6 +185,8 @@ DEBUG_TOOLBAR_CONFIG = {
     'DEBUG_TOOLBAR_CLASS': 'pages.debug_toolbar.CustomDebugToolbar',
 }
 
+RATELIMIT_PER_IP = '200/second'
+RATELIMIT_PER_USER = '100/second'
 
 INSTALLED_APPS = [
     'pages.apps.PagesConfig',
@@ -109,31 +198,16 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'compressor',
     'django.contrib.staticfiles',
+    'django_ratelimit',
     'rosetta',
-    'ipware',
+    # 'ipware',
     'debug_toolbar',
 ]
 
-COMPRESS_ENABLED = True
-COMPRESS_PRECOMPILERS = [
-    ('text/x-scss','django_libsass.SassCompiler'),
-]
 
 DEFAULT_FROM_EMAIL = "contact@dataeden.co"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-MIDDLEWARE = [
-    'django.middleware.locale.LocaleMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
 
 DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.versions.VersionsPanel',
@@ -157,10 +231,6 @@ DEBUG_TOOLBAR_PANELS = [
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),
 ] 
-
-
-SESSION_ENGINE = 'django.contrib.sessions.backends.db'
-# SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
 ROOT_URLCONF = 'dataeden_site.urls'
 

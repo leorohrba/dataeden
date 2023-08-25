@@ -16,16 +16,15 @@
                 {% if method == "register_email" %}
                 <h1 class="fw-bold mb-4">{% trans "You are at the start of something big!" %}</h1>
                 <p class="d-xl-flex mx-auto justify-content-xl-center" style="text-align: center;display: flex;position: relative;">{% trans "Thank you for signing up for our waitlist. We'll be in touch soon to tell you the good news." %}</p>
-                <img src="{% static 'staticfiles/img/verified.png' %}" style="max-height: 200px;" />   
+                <img src="{% static 'img/verified.png' %}" style="max-height: 200px;" />   
                 {% elif method == "contact" %}
                 <h1 class="fw-bold mb-4">{% trans "Thank you for reaching out to us!" %}</h1>
                 <p class="d-xl-flex mx-auto justify-content-xl-center" style="text-align: center;display: flex;position: relative;">{% trans "Our team will analyze your message. We'll be in touch as soon as possible." %}</p>
-                <img src="{% static 'staticfiles/img/mail.png' %}" style="max-height: 200px;" />   
+                <img src="{% static 'img/mail.png' %}" style="max-height: 200px;" />   
                 {% endif %}
             </div>
         </div>
     </section>
-    <script src="{% static 'staticfiles/bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 from django.urls import path
-from django.views.i18n import set_language
+# from django.views.i18n import set_language
 from .views import index, register_email, success, contact, change_language
 # , about_us, base
 
