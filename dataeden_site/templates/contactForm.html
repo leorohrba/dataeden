@@ -1,0 +1,64 @@
+    {% load static %}
+    {% load i18n %}
+    {% load form_error %}
+    {% block content %}
+    <section class="py-4 pt-0">
+        <div id="contact" class="container position-relative">
+            <div class="row" style="margin-bottom: 0px;display: block;overflow: visible;">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2 style="font-family: readex pro;font-size: 32px;">{% trans "Contact us" %}</h2>
+                    <p class="w-lg-50" style="font-family: readex pro;">{% trans "We are happy to offer help and respond any questions!" %}</p>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col col-lg-8 mx-auto">
+                    <div class="d-flex flex-column justify-content-start align-items-center h-100">
+                        <div class="d-flex align-items-center p-3">
+                            <div class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-envelope">
+                                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"></path>
+                                </svg>
+                            </div>
+                            <div class="px-2">
+                                <h6 class="mb-0" style="font-family: readex pro;">Email</h6>
+                                <p class="mb-0" style="font-family: readex pro;">contact@dataeden.co</p>
+                            </div>
+                        </div>
+                        <form class="col-11 col-sm-10 col-xl-8 p-1 p-md-4 justify-content-center" method="post" action="{% url 'pages:contact' %}" name="contact_form" enctype="multipart/form-data">
+                            {% if erro == "contact" %}
+                                <div class="alert alert-danger px-3 py-2 mx-auto" style="inline-size: fit-content;">
+                                    <ul class="row mb-0 ps-3">
+                                        {% for field, error_list in contact_form.errors.items %}
+                                        {% if forloop.first or forloop.counter == 3 %}
+                                        <div class="col">
+                                        {% endif %}
+                                            <li class="text-capitalize">
+                                                {{ field|as_divs }}
+                                                <ul class="px-1">
+                                                    {% for error in error_list %}
+                                                        <li>
+                                                            {{ error|as_divs }}
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </li>
+                                        {% if forloop.counter == 2 or forloop.counter == 4 %}
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                            {% csrf_token %}
+                            {{ form.path }}
+                            <div class="mb-3"><input class="form-control" placeholder="{% trans 'Name' %}" type="text" id="name-1" name="name" style="font-family: readex pro;"></div>
+                            <div class="mb-3"><input class="form-control" placeholder="{% trans 'Email' %}" type="email" id="email-1" name="email" style="font-family: readex pro;"></div>
+                            <div class="mb-3"><input class="form-control" placeholder="{% trans 'Subject' %}" type="text" id="subject-1" name="subject" style="font-family: readex pro;"></div>
+                            <div class="mb-3"><textarea class="form-control" placeholder="{% trans 'Message' %}" id="message-1" name="message" rows="6" style="font-family: readex pro;"></textarea></div>
+                            <div><button class="btn btn-primary d-block w-100" type="submit" style="font-family: readex pro;">{% trans "Send" %}</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}

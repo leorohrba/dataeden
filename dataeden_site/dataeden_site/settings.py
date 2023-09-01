@@ -11,14 +11,15 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-from dataeden_site.storage import NginxStorage
-from django.contrib.staticfiles.storage import FileSystemStorage
 import os
-import sys
+from django.utils.translation import gettext_lazy as _
+# from django.core.cache.backends.memcached import MemcachedCache
+# from django_ratelimit import RateLimitMiddleware
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -26,61 +27,141 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-b9xk&q#0o9^so2zjb&mqhhc4pnqnhqt5tu*5t&ic401kue%#7)'
 
+ENCRYPTION_KEY = b'R_vUYsaQQkyR7GK8updBtHSq3MNM9rilsVCZPblc6YI='
+
+# SECRET_KEY = 'your_secret_key'
+
+# PGCRYPTO_KEY = 'your_encryption_key'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False
 DEBUG = True
 
-# ALLOWED_HOSTS = []
+LANGUAGE_CODE = 'en'
 
-# STATIC_URL = '/static/'
+LANGUAGES = [
+    ('en', _('English')),
+    ('pt-BR', _('Portuguese')),
+    # ('pt-br', _('Portuguese')),
+]
 
-# STATIC_ROOT = 'C:/DataEden/dataeden_site/static/'
-# STATIC_ROOT = ''
- 
-STATIC_URL = '/static/'
+LANGUAGE_MAP = {
+    'en': 'us',  # Example: 'US' country code maps to English language
+    'pt-br': 'br',  # Example: 'BR' country code maps to Portuguese language
+    # Add more country code to language mappings as needed
+}
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+TIME_ZONE = 'America/Sao_Paulo'
 
-# STATICFILES_DIRS = ('static',)
+USE_I18N = True
 
-if os.environ.get('APP_ENV') == 'github':
-    STATICFILES_STORAGE = FileSystemStorage(location='static')
-    DEBUG = False
-else:
-    STATICFILES_STORAGE = 'dataeden_site.storage.NginxStorage'
-    DEBUG = True
+USE_L10N = True
 
-VENV_PATH = os.path.dirname(BASE_DIR)
-STATIC_ROOT = os.path.join(VENV_PATH, 'static_root')
+USE_TZ = True
 
-# ADMIN_MEDIA_PREFIX = '/static/admin/'
+STATIC_URL = '/staticfiles/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_media/')
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'staticfiles'),
+#     # os.path.join(BASE_DIR, 'admin'),
+# ]
+STATICFILES_DIRS = [
+    # os.path.join(BASE_DIR, 'static').replace("\\", "/"),
+    os.path.join(BASE_DIR, 'staticfiles').replace("\\", "/"),
+    os.path.join(BASE_DIR, 'static_media').replace("\\", "/"),
+    # os.path.join(BASE_DIR, 'staticfiles'),
+    # os.path.join(BASE_DIR, 'staticfiles/css'),
+]
 
-STATICFILES_DIRS = (
-    "C:/DataEden/dataeden_site/static",
-    # ('static', os.path.join(BASE_DIR, 'static/bootstrap')),
-    # ('static', os.path.join(BASE_DIR, 'static/bootstrap/css')),
-    # ('static', os.path.join(BASE_DIR, 'static/bootstrap/js')),
-    # ('static', os.path.join(BASE_DIR, 'static/css')),
-    # ('images', os.path.join(BASE_DIR, 'static/img')),
-)
-# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.NginxStorage'
+# CACHES = {
+#     'default': {
+#         # 'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+#         'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
+#         # 'LOCATION': '127.0.0.1:11211',  # Use the service name from docker-compose.yml
+#         'LOCATION': 'memcached:11211',  # Use the service name from docker-compose.yml
+#     },
+#     'cache-for-ratelimiting': {},
+# }
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# COMPRESS_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+COMPRESS_ROOT = os.path.join(BASE_DIR, 'static_media/CACHE/')
+# COMPRESS_URL = STATIC_URL + 'CACHE/'
+COMPRESS_URL = STATIC_URL
 
-# STATICFILES_DIRS = (
-#     # This points to the static folder inside the project folder
-#     os.path.join(BASE_DIR, 'static'),
+COMPRESS_OUTPUT_DIR = COMPRESS_ROOT
 
-#     # This points to the static folder outside the project folder
-#     'C:\DataEden\static',
-# )
 
-# Application definition
+# COMPRESS_URL = '/staticfiles/CACHE/'
+# COMPRESS_URL = '/static/'
 
-# STATICFILES_FINDERS = (
-#     'django.contrib.staticfiles.finders.FileSystemFinder',
-#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-# )
+# COMPRESS_ROOT = STATIC_ROOT
+# COMPRESS_URL = STATIC_URL
+
+CACHES = {
+    "default": {
+        # "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis:6379/1",  # Use the service name from docker-compose.yml
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+COMPRESS_OFFLINE = True
+
+# RATELIMIT_USE_CACHE = 'cache-for-ratelimiting'
+
+# SESSIONS_ENGINE='django.contrib.sessions.backends.cache'
+# SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+# SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_CACHE_ALIAS = 'default'
+
+# SIGNING_BACKEND = 'django_cryptography.core.signing.TimestampSigner'
+
+#DEVELOPMENT
+# STATICFILES_STORAGE = 'dataeden_site.storage.FileSystemStorage'
+# DEVELOPMENT ?
+# STATICFILES_STORAGE = 'compressor.storage.CompressedManifestStaticFilesStorage'
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    # "staticfiles": {
+    #     "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    # },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
+#PRODUCTION
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+COMPRESS_ENABLED = True
+COMPRESS_PRECOMPILERS = [
+    ('text/x-scss','django_libsass.SassCompiler'),
+    ('text/x-scss', 'sassc < {infile} {outfile}'),
+]
+MIDDLEWARE = [
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.cache.CacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'django_ratelimit.RateLimitMiddleware',
+    # 'django_ratelimit.middleware.RateLimitMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # 'django_pgcrypto.middleware.CryptoMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
 
 STATICFILES_CONTENT_TYPES = [
     ('text/css', 'css'),
@@ -90,80 +171,159 @@ STATICFILES_CONTENT_TYPES = [
 
 TEMPLATE_CONTEXT_PROCESSORS = 'django.core.context_processors.static'
 
+STATICFILES_FINDERS = [
+    'compressor.finders.CompressorFinder',
+]
+
+TEMPLATE_FILTERS = {
+    'as_divs': 'my_app.templatetags.as_divs',
+}
+
+internal_ips = ['127.0.0.1', ]
+if DEBUG:    
+    import socket
+    hostname, _, ips =socket.gethostbyname_ex(socket.gethostname())
+    internal_ips += [ip[:-1] + '1' for ip in ips]
+    import mimetypes
+    mimetypes.add_type("image/png", ".png", True)
+    mimetypes.add_type("text/html", ".html", True)
+    mimetypes.add_type("text/css", ".css", True)
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': lambda _request: DEBUG,
+    'DEBUG_TOOLBAR_CLASS': 'pages.debug_toolbar.CustomDebugToolbar',
+}
+
+RATELIMIT_PER_IP = '200/second'
+RATELIMIT_PER_USER = '100/second'
+
 INSTALLED_APPS = [
+    'pages.apps.PagesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
+    'compressor',
     'django.contrib.staticfiles',
+    'django_ratelimit',
+    'django_cryptography',
+    # 'cryptography',
+    'rosetta',
+    # 'ipware',
+    'debug_toolbar',
 ]
 
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+DEFAULT_FROM_EMAIL = "contact@dataeden.co"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+
+DEBUG_TOOLBAR_PANELS = [
+    'debug_toolbar.panels.versions.VersionsPanel',
+    'debug_toolbar.panels.timer.TimerPanel',
+    'debug_toolbar.panels.settings.SettingsPanel',
+    'debug_toolbar.panels.headers.HeadersPanel',
+    'debug_toolbar.panels.request.RequestPanel',
+    'debug_toolbar.panels.sql.SQLPanel',
+    'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+    'debug_toolbar.panels.templates.TemplatesPanel',
+    'debug_toolbar.panels.cache.CachePanel',
+    'debug_toolbar.panels.signals.SignalsPanel',
+    'debug_toolbar.panels.logging.LoggingPanel',
+    'debug_toolbar.panels.redirects.RedirectsPanel',
 ]
+
+# APPEND_SLASH = False
+
+# Map country codes to languages
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+] 
 
 ROOT_URLCONF = 'dataeden_site.urls'
-
-# TEMPLATE_DIRS = [
-#     os.path.join(BASE_DIR, 'templates'),
-# ]
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR],
-        # 'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [
+            BASE_DIR,
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'templates', 'admin'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.i18n',
                 'django.contrib.messages.context_processors.messages',
+                'pages.context_preprocessor.languages',
             ],
+            "libraries": {
+                "form_error": "pages.templatetags.form_error",
+                "admin.urls": "django.contrib.admin.templatetags.admin_urls",
+            },
         },
     },
 ]
 
 WSGI_APPLICATION = 'dataeden_site.wsgi.application'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', 'db', '127.0.0.0', '127.0.0.1', '172.18.0.2', '172.18.0.3', '0.0.0.0']
 
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': False,
-#     'handlers': {
-#         'console': {
-#             'class': 'logging.StreamHandler',
-#             'stream': sys.stdout,
-#         },
-#     },
-#     'loggers': {
-#         'django': {
-#             'handlers': ['console'],
-#             'level': 'DEBUG',
-#         },
-#     },
-# }
-
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# hostname = socket.gethostname()
+# ip_address = socket.gethostbyname(hostname)
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        "ENGINE": "django.db.backends.postgresql",
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'dataeden',
+        # 'USER': os.environ.get('POSTGRES_USER'),
+        # "HOST": "11.23.34.2",  # set in docker-compose.yml
+        "PORT": 5432,  # default postgres port
+        "HOST": "db",  # set dynamically
+        # "HOST": "",  # QUANDO MIGRATE
+        # 'OPTIONS': {
+        #     'sslmode': 'require',  # Use 'require' for mandatory SSL
+        # },
     }
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'noreply.dataeden@gmail.com'
+EMAIL_HOST_PASSWORD = 'wcngloezexdnsjge'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -187,19 +347,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_TZ = True
-
+# LANGUAGE_COUNTRY = {
+#     'en': 'us',
+#     'pt-BR': 'br',
+#     # Add more mappings as needed
+# }
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

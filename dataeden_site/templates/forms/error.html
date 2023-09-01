@@ -1,0 +1,18 @@
+{% load form_error %}
+{% block content %}
+<!-- <div class="alert alert-danger"> -->
+    {% for field, error_list in errors.items %}
+        {% for error in error_list %}
+            {{ error|as_divs }}
+        {% endfor %}
+    {% endfor %}
+<!-- </div> -->
+{% endblock content %}
+
+{% if form.errors %}
+<div class="alert alert-danger">
+    {% include 'forms/error.html' %}
+</div>
+{% endif %}
+
+{{ form.errors|as_divs }}

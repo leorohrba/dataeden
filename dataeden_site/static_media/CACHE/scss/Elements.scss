@@ -1,0 +1,12 @@
+#scrollTop {
+    position: fixed;
+    bottom: 40px;
+    right: 55px;
+    display: none;
+    width: 45px;
+    height: 45px;
+}
+
+#scrollTop.transparent {
+    opacity: 0.5;
+}

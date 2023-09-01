@@ -1,0 +1,26 @@
+/* import the Bootstrap */
+@import "../bootstrap/scss/bootstrap.scss";
+
+/* ------- customize primary button color -------- */   
+$mynewcolor:#50b049;
+
+// .btn .btn-primary{
+//     color: #ffffff;
+//     --bs-btn-color: #ffffff;
+//     --bs-btn-hover-color: darken(#ffffff, 10%);
+// }
+
+.btn .btn-primary {
+    @include button-variant(
+        $mynewcolor, 
+        $border: darken($mynewcolor, 7.5%), 
+        $color: $white, 
+        $hover-background: lighten($mynewcolor,5%), 
+        $hover-border: lighten($mynewcolor, 10%), 
+        $hover-color: $white);
+    
+}
+
+.btn-outline-primary {
+    @include button-outline-variant($mynewcolor, $white, lighten($mynewcolor,5%), $mynewcolor);
+}
