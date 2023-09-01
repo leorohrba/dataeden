@@ -1,6 +1,6 @@
 from django.urls import path
 # from django.views.i18n import set_language
-from .views import index, register_email, success, contact, change_language
+from .views import index, register_email, success, contact, change_language, privacy_policy
 # , about_us, base
 
 app_name = "pages"
@@ -13,6 +13,7 @@ urlpatterns = [
     path("contact/", contact, name="contact"),
     path("email/", register_email, name='registerEmail'),
     path('success/<str:method>/', success, name='success'),
+    path('privacy-policy/', privacy_policy, name='privacyPolicy'),
     # path('<str:language_code>/success/<str:method>/', success, name='success'),
     # path("success/", success, name='success'),
 ]

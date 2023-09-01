@@ -1,4 +1,5 @@
 # from django import forms
+import base64
 from django.db import models
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
@@ -13,6 +14,11 @@ from django.template.loader import get_template
 
 # from django.conf import HOST_EMAIL_USER
 from django.conf import settings
+
+from cryptography.fernet import Fernet
+# from django_cryptography.fields import EncryptedTextField
+from django_cryptography.fields import encrypt
+# sensitive_data = encrypt(models.CharField(max_length=50))
 
 # Create your models here.
 
@@ -50,13 +56,30 @@ class LanguageManager(models.Manager):
 
 
 class EmailAddress(models.Model):     
+    # email = EncryptedTextField(unique=True)
+    # email = encrypt(models.EmailField(unique=True))
+    # sensitive_data = encrypt(models.CharField(max_length=50))
+    # email = models.BinaryField(unique=True)
     email = models.EmailField(unique=True)
+    subscribed = models.BooleanField(default=True)
 
+    # def __str__(self):
+        # return Cryptography.decrypt_content(self.email)
+    
+    @property
+    def decrypted_email(self):
+        return Cryptography.decrypt_content(self.email)
+        # encrypted_bytes = base64.urlsafe_b64decode(self.email.encode('utf-8'))
+    
     @staticmethod
     def save_email(form):
 
         if form.is_valid():
             email = form.cleaned_data.get('email')
+
+            encrypted_email = Cryptography.encrypt_content(email)
+            email = base64.urlsafe_b64encode(encrypted_email).decode('utf-8')
+            # form = Cryptography.encrypt_content(form)
             
             try:
                 # Check if the email already exists in the database
@@ -67,7 +90,9 @@ class EmailAddress(models.Model):
             
             except ObjectDoesNotExist:
                 # Email doesn't exist, proceed with saving
-                form.save()
+                email_form = form.save(commit=False)  # Create a model instance but don't save to DB yet
+                email_form.email = email  # Assign the encrypted email
+                email_form.save()
                 print("Email saved successfully")
                 return redirect('pages:success', method='register_email')
         else:
@@ -128,4 +153,35 @@ class ContactModel(models.Model):
         else:
             return render(request, 'templates/index.html', {'contact_form': form})   
 
+    app_label = 'pages'
+
+class Cryptography(models.Model):
+
+    # key = settings.ENCRYPTION_KEY
+    # key64 = base64.urlsafe_b64encode(key)
+
+    @staticmethod
+    def encrypt_content(content, key=settings.ENCRYPTION_KEY):
+        # key64 = base64.urlsafe_b64encode(key)
+        # f = Fernet(key64)
+        f = Fernet(key)
+        encrypted_content = f.encrypt(content.encode())
+        # encrypted_string = encrypted_content.decode('utf-8')
+        return encrypted_content
+    
+    @staticmethod
+    def decrypt_content(base64_encoded_string, key=settings.ENCRYPTION_KEY):
+        encrypted_bytes = base64.urlsafe_b64decode(base64_encoded_string.encode('utf-8'))
+        f = Fernet(key)
+        decrypted_content = f.decrypt(encrypted_bytes)
+        return decrypted_content.decode('utf-8')
+
+    
+    # @staticmethod
+    # def decrypt_content(encrypted_content, key=settings.ENCRYPTION_KEY):
+    #     # key64 = base64.urlsafe_b64encode(key)
+    #     # f = Fernet(key64)
+    #     f = Fernet(key)
+    #     decrypted_content = f.decrypt(encrypted_content)
+    #     return decrypted_content.decode('utf-8')
     app_label = 'pages'

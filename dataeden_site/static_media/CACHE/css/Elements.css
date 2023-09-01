@@ -7,18 +7,8 @@
   height: 45px;
 }
 
-/* Disable dragging for images */
-img {
-  pointer-events: none;
-  -webkit-user-drag: none;
-  -moz-user-drag: none;
-}
-
-/* Disable dragging for icons (assuming they have a specific class) */
-.icon {
-  pointer-events: none;
-  -webkit-user-drag: none;
-  -moz-user-drag: none;
+#scrollTop.transparent {
+  opacity: 0.5;
 }
 
 /*# sourceMappingURL=Elements.css.map */

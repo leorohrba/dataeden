@@ -1,0 +1,245 @@
+{% extends 'templates/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+<style>
+    .text-list li {
+        word-wrap: break-word; /* Allow long words to break and wrap */
+    }
+    .text-list {
+        display: flex;
+        flex-direction: column;
+    }
+    #sidebar {
+        font-family: readex pro;
+        overflow-y: auto;
+        height: 100%;
+        max-width: 100%;
+        /* position: sticky; Change to sticky position */
+        /* top: 0; */
+        flex-grow: 1; /* Allow the sidebar to grow based on content */
+    }
+    .fixed {
+        position: fixed;
+        top: 0;
+    }
+    .not-fixed {
+        position: relative;
+        /* top: 0; */
+    }
+    .nav-side a {
+        color: black;
+    }
+    @media (max-width: 320px) {
+        .width-col {
+            width: 100%;
+        }
+    }
+</style>
+    <section>
+        <div class="container">
+            <div class="row mt-5 mb-4">
+                <div class="col-md-12">
+                    <div class="row mb-2">
+                        <div class="col-auto">
+                            <header>
+                                <div class="d-flex align-self-center">
+                                    <h1 style="font-family: readex pro;">{% trans "Privacy Policy" %}</h1>
+                                </div>
+                            </header>
+                        </div>
+                        <div class="col d-flex">
+                            <p class="align-self-end mb-2" style="font-family: readex pro;color: var(--bs-light-text-emphasis);">{% trans "as of:" %} 29/08/2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="sidebar-parent" class="width-col col-6 col-sm-5 col-md-4 col-lg-3 d-flex">
+                    <ul class="nav flex-column list-unstyled text-list" id="sidebar">
+                        <li class="nav-item nav-side"><a class="nav-link" href="#privPol">{% trans "Our policy" %}</a></li>
+                        <li class="nav-item nav-side"><a class="nav-link" href="#dataTreat">{% trans "Data treatment" %}</a><ul>
+                                <li class="nav-item nav-side"><a class="nav-link" href="#accInfo">{% trans "Account Information" %}</a></li>
+                                <li class="nav-item nav-side"><a class="nav-link" href="#payment">{% trans "Billing &amp; Payment" %}</a></li>
+                                <li class="nav-item nav-side"><a class="nav-link" href="#idVer">{% trans "ID verification" %}</a></li>
+                                <li class="nav-item nav-side"><a class="nav-link" href="#communications">{% trans "Comunication" %}</a></li>
+                                <li class="nav-item nav-side"><a class="nav-link" href="#docs">{% trans "Photos &amp; Documents" %}</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-side"><a class="nav-link" href="#telemetry">{% trans "Telemetry" %}</a></li>
+                        <li class="nav-item nav-side"><a class="nav-link" href="#thirdParties">{% trans "Third parties" %}</a></li>
+                        <li class="nav-item nav-side"><a class="nav-link" href="#cookies">{% trans "Cookies" %}</a></li>
+                        <li class="nav-item nav-side"><a class="nav-link" href="#dataControl">{% trans "Data control" %}</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <p style="font-family: readex pro;">
+                    {% blocktrans trimmed %}
+                    <span id="privPol">In our Privacy Policy</span> we describe how we process and handle the data 
+                    provided in relation to your use of our products, services, applications 
+                    and sites linked to this policy (we refer to them collectively as our 
+                    &quot;(services)&quot;). We may revise this policy from time to time. Review it 
+                    occasionally to stay up to date on our most current practices. We will place 
+                    the date of the 'Last Updated' at the top of each policy. If you disagree 
+                    with such an update to this policy, you may cancel your account of services. 
+                    If you do not cancel your account before the date the update takes effect, 
+                    your continued use of our services will be subject to the updated Privacy 
+                    Policy.<br><br><span id="dataTreat">We and our service providers</span> need to collect certain 
+                    information about you to provide our services, respond to your requests and 
+                    manage your account with us.<br><br> • <span id="accInfo"><b>Account Information.</b></span> Some 
+                    services require or allow you to create an account before you can access 
+                    them. As part of registering an account, we may collect information such as 
+                    your name, username, email address, password, and some other information 
+                    about you, including, if applicable, your Circle account and login 
+                    information. For our identity protection products, we will also ask for your 
+                    CPF number and other information.<br><br> • <span id="payment"><b>Billing &amp; Payment 
+                    Information.</b></span> To purchase a service, you may need to provide us with some 
+                    details, such as billing name, billing contact details (addresses, email 
+                    addresses) and payment instrument details.<br><br> • <span id="idVer"><b>Identity 
+                    Verification Information.</b></span> Some services require you to verify your 
+                    identity as part of creating an account. We may collect information such as 
+                    email addresses or phone numbers for this purpose.<br><br> • <span id="communications"><b> 
+                    Communications and Submissions.</b></span> You may choose to provide us with 
+                    voluntary information when communicating with us (for example, by email, 
+                    phone or chat for support or to inquire about our services), including by 
+                    filling out an online form, responding to surveys, providing feedback, 
+                    posting comments on our site, participating in promotions, participating in 
+                    forums, sites and related information services to share your experiences or 
+                    discuss technical issues or submit information through our services.<br><br> 
+                    • <span id="docs"><b>Camera, photos.</b></span> You may choose to provide us with images and other 
+                    camera information and photos from your device to allow us to provide the 
+                    services. For example, you can provide us with a photo of your driver's 
+                    license to monitor your driver's license number. <br> • <b>Documents.</b> You 
+                    may choose to upload documents and other files to our services stored on 
+                    your device.<br><br><span id="telemetry">In order to continuously improve</span> the service levels we 
+                    provide, we automatically collect information about the use of our services 
+                    to monitor problems and look for opportunities to make improvements. Some of 
+                    this information is collected using cookies and technologies <br>As part of 
+                    our services, we may receive information about you from third parties. We 
+                    take the same level of precaution and transparency of use that we provide 
+                    for the information you provide us directly.<br><br> • <b>References.</b> If 
+                    you are invited to use a Data Eden service, the person who invited you may "  
+                    send us information about you, such as your email address or other contact 
+                    information.<br><br> • <span id="thirdParties"><b>Third party accounts.</b></span> Some services may allow 
+                    you to register an account using a third party account (such as a Google or 
+                    Microsoft account) and, in some cases, you may register third party accounts 
+                    such as bank accounts or social media accounts with us. If you do this, this 
+                    third party may send us some information about you that they have. You can 
+                    control what information they send us through your privacy settings for that 
+                    third party account.<br><br> • <b>Threat information.</b> We receive 
+                    information from reputable members of the security industry who provide 
+                    information to help us provide, develop, test and improve our services (for 
+                    example, lists of malicious URLs, spam blacklists, blacklists of phone 
+                    numbers and malware samples). Some of this information may contain 
+                    incidental personal data.</p><br><br><br><br>
+                    <span id="cookies"><h3><b>Tracking technologies and 
+                    cookies</h3></b></span> <br>
+                    <p style="font-family: readex pro;">We use Cookies and similar tracking technologies to 
+                    track activity on Our Service and store certain information. The tracking 
+                    technologies used are beacons, tags and scripts to collect and track 
+                    information and to improve and analyze Our Service. The technologies we use 
+                    may include: <br><b>Cookies or Browser Cookies.</b> A cookie is a small file 
+                    placed on your device. You can instruct your browser to refuse all cookies 
+                    or indicate when a cookie is being sent. However, if you do not accept 
+                    cookies, you may not be able to use some parts of our service. Unless you 
+                    have adjusted your browser setting to refuse cookies, our service may use 
+                    cookies. <br><b>Web Beacons.</b> Certain sections of our Service and our 
+                    emails may contain small electronic files known as web beacons (also called 
+                    transparent gifs, pixel tags, and single pixel gifs) that allow the Company, 
+                    for example, to count users who have visited these pages. or opened an email 
+                    and for other site-related statistics (e.g., recording the popularity of a 
+                    particular section and checking system and server integrity). <br>Cookies 
+                    can be Persistent or Session Cookies. Persistent cookies remain on your 
+                    personal computer or mobile device when you go offline, while session 
+                    cookies are deleted as soon as you close your web browser. You can learn 
+                    more about cookies in the TermsFeed website article. <br>We use session 
+                    cookies and persistent cookies for the purposes described below: <br> 
+                    Required / essential cookies <br>Type: Session Cookies<br><br>Managed by: 
+                    Us <br>Purpose: These Cookies are essential to provide you with the services 
+                    available through the Site and to enable you to use some of its features. 
+                    They help authenticate users and prevent fraudulent use of user accounts. 
+                    Without these Cookies, the services you have requested cannot be provided, 
+                    and we only use these Cookies to provide these services to You. <br>Cookie 
+                    Policy / Cookie Acceptance Notice <br>Type: Persistent Cookies <br>Managed 
+                    by: Us <br>Purpose: These cookies allow us to remember the choices you make 
+                    when using the site, such as remembering your login details or language 
+                    preference. The purpose of these cookies is to provide you with a more 
+                    personal experience and to prevent you from having to re-enter your 
+                    preferences every time you use the site.<br><br>For more information about 
+                    the cookies we use and your choices regarding cookies, visit our Cookie 
+                    Policy or the Cookies section of our Privacy Policy.<br><br>Use of your 
+                    personal data<br><br>The Company may use Personal Data for the following 
+                    purposes: <br><br> • To provide and maintain our Service, including to 
+                    monitor the use of our Service.<br><br> • To manage your account: to manage 
+                    your registration as a user of the Service. The Personal Data you provide 
+                    may give you access to different features of the Service that are available 
+                    to you as a registered user.<br><br> • For the performance of a contract: the 
+                    development, fulfillment and execution of the purchase contract of the 
+                    products, items or services that you have acquired or of any other contract 
+                    with us through the Service.<br><br> • To contact you: To contact you by e-
+                    mail, phone calls, SMS or other equivalent forms of electronic communication, 
+                    such as push notifications from a mobile application about updates or 
+                    informational communications related to the features, products or services 
+                    contracted, including security updates, when necessary or reasonable for 
+                    their implementation.<br><br> • To provide you with news, special offers and 
+                    general information about other goods, services and events that we offer and 
+                    that are similar to those you have already purchased or consulted, unless 
+                    You have opted not to receive such information.<br><br> • To manage your 
+                    requests: To attend and manage your requests to us.<br><br> • For business 
+                    transfers: We may use Your information to evaluate or conduct a merger, sale 
+                    reestructuring, reorganization, dissolution or other sale or transfer of all 
+                    or part of our assets, whether as a going concern or as part of bankruptcy, 
+                    liquidation, or similar process, in which Personal Data held by us about 
+                    users of our Service are among the assets transferred.<br><br> • For other 
+                    purposes: We may use Your information for other purposes, such as data 
+                    analysis, identifying usage trends, determining the effectiveness of our 
+                    promotional campaigns and to evaluate and improve our Service, products, 
+                    services, marketing and your experience.<br><br>We may share Your personal 
+                    information in the following situations:<br><br> • With Service Providers: 
+                    We may share Your personal information with Service Providers to monitor and 
+                    analyze the use of our Service, to contact You.<br><br> • For business 
+                    transfers: We may share or transfer Your personal information in connection 
+                    with, or during negotiations of, any merger, sale of Company assets, 
+                    financing or acquisition of all or a portion of Our business to another 
+                    company.<br><br> • With Affiliates: We may share Your information with Our 
+                    affiliates, in which case we will require those affiliates to honor this 
+                    Privacy Policy. Affiliates include Our parent company and any other 
+                    subsidiaries, joint venture partners or other companies that We control or 
+                    that are under common control with Us.<br><br> • With business partners: We 
+                    may share Your information with Our business partners to offer You certain 
+                    products, services or promotions.<br><br> • With other users: when You share 
+                    personal information or otherwise interact in the public areas with other 
+                    users, such information may be viewed by all users and may be publicly 
+                    distributed outside.<br><br> • With Your consent: We may disclose Your 
+                    personal information for any other purpose with Your consent.<br><br><br><br>
+                    <span id="dataControl"><b>Retention of Your Personal Data</b></span><br><br>The Company will retain Your 
+                    Personal Data only for as long as is necessary for the purposes set out in 
+                    this Privacy Policy. We will retain and use Your Personal Data to the extent 
+                    necessary to comply with our legal obligations (for example, if we are 
+                    required to retain your data to comply with applicable laws), resolve 
+                    disputes and enforce our legal agreements and policies.<br><br>The Company 
+                    will also retain Usage Data for internal analysis purposes. Usage Data is 
+                    generally retained for a shorter period of time, except when this data is 
+                    used to strengthen security or to improve the functionality of Our Service, 
+                    or We are legally obligated to retain this data for longer periods of 
+                    time.<br><br><b>Transfer of Your Personal Data</b><br><br>Your information, 
+                    including Personal Data, is processed at the operating offices of the 
+                    Company and in any other places where the parties involved in the processing 
+                    are located. This means that this information may be transferred to - and 
+                    maintained on - computers located outside of Your state, province, country 
+                    or other governmental jurisdiction where the data protection laws may differ 
+                    than those from Your jurisdiction.<br><br>Your consent to this Privacy 
+                    Policy followed by Your submission of such information represents Your 
+                    agreement to that transfer.<br><br>The Company will take all steps 
+                    reasonably necessary to ensure that Your data is treated securely and in 
+                    accordance with this Privacy Policy and no transfer of Your Personal Data 
+                    will take place to an organization or a country unless there are adequate 
+                    controls in place including the security of Your data and other personal 
+                    information.</p><br><br><br><br><br><br><br><br><br><br>
+                    {% endblocktrans %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="{% static 'js/sidebar.js' %}"></script>
+{% endblock %}

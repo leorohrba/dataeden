@@ -27,6 +27,12 @@ PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-b9xk&q#0o9^so2zjb&mqhhc4pnqnhqt5tu*5t&ic401kue%#7)'
 
+ENCRYPTION_KEY = b'R_vUYsaQQkyR7GK8updBtHSq3MNM9rilsVCZPblc6YI='
+
+# SECRET_KEY = 'your_secret_key'
+
+# PGCRYPTO_KEY = 'your_encryption_key'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False
 DEBUG = True
@@ -113,6 +119,8 @@ COMPRESS_OFFLINE = True
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 SESSION_CACHE_ALIAS = 'default'
 
+# SIGNING_BACKEND = 'django_cryptography.core.signing.TimestampSigner'
+
 #DEVELOPMENT
 # STATICFILES_STORAGE = 'dataeden_site.storage.FileSystemStorage'
 # DEVELOPMENT ?
@@ -150,6 +158,7 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # 'django_pgcrypto.middleware.CryptoMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -199,6 +208,8 @@ INSTALLED_APPS = [
     'compressor',
     'django.contrib.staticfiles',
     'django_ratelimit',
+    'django_cryptography',
+    # 'cryptography',
     'rosetta',
     # 'ipware',
     'debug_toolbar',
@@ -300,6 +311,9 @@ DATABASES = {
         "PORT": 5432,  # default postgres port
         "HOST": "db",  # set dynamically
         # "HOST": "",  # QUANDO MIGRATE
+        # 'OPTIONS': {
+        #     'sslmode': 'require',  # Use 'require' for mandatory SSL
+        # },
     }
 }
 

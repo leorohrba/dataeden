@@ -32,6 +32,17 @@ def index(request, erro=None, email_form=EmailForm(prefix='email_form'), contact
     }
     return HttpResponse(template.render(context, request))
 
+def privacy_policy(request):
+    LanguageManager.activate_language(request)  # Activate the appropriate language
+
+    template = get_template('templates/privacyPolicy.html')
+    context = {
+        'title': 'Data Eden',
+        'content': 'Welcome to Data Eden',
+        'css_url': STATIC_URL + 'pages/style.css',
+    }
+    return HttpResponse(template.render(context, request))
+
 def success(request, method):
 
     LanguageManager.activate_language(request)  # Activate the appropriate language
