@@ -9,9 +9,9 @@
             <div class="row gy-5 gy-md-0">
                 <div class="col-md-6 order-2 order-md-1 text-center text-md-start d-flex justify-content-center align-items-center align-items-md-center justify-content-xl-center">
                     <div style="max-width: 350px;color: var(--bs-emphasis-color);">
-                        <h2 class="fw-bold" style="font-family: readex pro;color: var(--bs-emphasis-color);">{% trans "Coming soon..." %}</h2>
+                        <h2 class="fw-bold" style="color: var(--bs-emphasis-color);">{% trans "Coming soon..." %}</h2>
                         {% if request.LANGUAGE_CODE == "en" %}
-                        <p class="my-3" style="font-family: readex pro;font-size: 16px;color: var(--bs-emphasis-color);">{% trans "We are currently under construction to bring you more peace of mind." %}</p>
+                        <p class="my-3" style="font-size: 16px;color: var(--bs-emphasis-color);">{% trans "We are currently under construction to bring you more peace of mind." %}</p>
                         {% endif %}
                         <p style="padding-bottom: 0px;margin-bottom: 0;color: var(--bs-emphasis-color);">{% trans "Subscribe to get notified when we go live!" %}</p>
                         <p style="color: var(--bs-body-color);border-bottom-color: var(--bs-emphasis-color);">{% trans "-and don't worry, your data's safety is our top priority" %}</p>
@@ -37,11 +37,11 @@
                                 
                                 {% csrf_token %}
                                 <div class="col-sm-12 col-md-8 d-flex justify-content-center align-items-center">
-                                    <input class="d-flex d-md-flex justify-content-center align-items-center form-control" name="email" id="email" type="email" placeholder="Email" style="padding-left: 5px;font-family: readex pro;">
+                                    <input class="d-flex d-md-flex justify-content-center align-items-center form-control" name="email" id="email" type="email" placeholder="Email" style="padding-left: 5px;">
                                 </div>
                                 <div class="col-sm col-md-4 d-flex justify-content-center">
                                     {% block buttons %}
-                                    <button class="btn btn-primary d-flex justify-content-center" type="submit" style="font-family: readex pro;" data-bs-toggle="submit">
+                                    <button class="btn btn-primary d-flex justify-content-center" type="submit" style="" data-bs-toggle="submit">
                                         {% trans "Register" %}
                                     </button>
                                     {% endblock buttons %}

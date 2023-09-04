@@ -33,15 +33,15 @@
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="{% if request.resolver_match.url_name == 'index' %}#{% else %}{% url 'pages:index' %}{% endif %}"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon" style="background: var(--bs-tertiary-bg);"><img src="{% static 'img/folhas_bold_cor_escuro4_hq.png' %}" style="max-width: 120px;" width="33" height="34"></span><span style="font-family: Urbanist, sans-serif;font-weight: bold;font-size: 25px;">Data Eden</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-2">
                 <ul class="navbar-nav ms-auto align-items-end">
-                    <li class="nav-item"><a class="nav-link active" href="{% url 'pages:index' %}#" style="font-family: readex pro;">{% trans "Home" %}</a></li>
-                    <li class="nav-item" style="font-family: readex pro;"><a class="nav-link" href="{% url 'pages:index' %}#aboutUs" style="color: var(--bs-navbar-brand-color);font-family: readex pro;">{% trans "About Us" %}</a></li>
-                    <li class="nav-item" style="font-family: readex pro;"><a class="nav-link" href="{% url 'pages:index' %}#contact" style="color: var(--bs-navbar-brand-color);font-family: readex pro;">{% trans "Contact" %}</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{% url 'pages:index' %}#" style="">{% trans "Home" %}</a></li>
+                    <li class="nav-item" style=""><a class="nav-link" href="{% url 'pages:index' %}#aboutUs" style="color: var(--bs-navbar-brand-color);">{% trans "About Us" %}</a></li>
+                    <li class="nav-item" style=""><a class="nav-link" href="{% url 'pages:index' %}#contact" style="color: var(--bs-navbar-brand-color);">{% trans "Contact" %}</a></li>
                     {% if request.resolver_match.url_name != 'index' %}
-                    <li class="nav-item ms-3" style="font-family: readex pro;">
+                    <li class="nav-item ms-3" style="">
                         <a class="btn btn-primary" role="button" href="{% url 'pages:index' %}">{% trans "Register" %}</a>
                     </li>
                     {% endif %}
-                    <li class="nav-item{% if request.resolver_match.url_name == 'index' %} ms-3{% endif %}" style="font-family: readex pro;">
+                    <li class="nav-item{% if request.resolver_match.url_name == 'index' %} ms-3{% endif %}" style="">
                         <!-- <div class="dropdown"> -->
                         <div class="btn-group my-2 my-md-0 mx-0 mx-md-2">
                             <button class="btn btn-outline-primary dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -54,7 +54,7 @@
                                 {% get_available_languages as LANGUAGES %}
                                 {% for lang_code, lang_name in LANGUAGES %}
                                     {% with country_code=LANGUAGE_MAP|dict_lookup:lang_code %}
-                                        <a class="dropdown-item" href="{% url 'pages:set_language' %}?language={{ lang_code|lower }}" style="font-family: readex pro; color: var(--bs-navbar-brand-color);">
+                                        <a class="dropdown-item" href="{% url 'pages:set_language' %}?language={{ lang_code|lower }}" style=" color: var(--bs-navbar-brand-color);">
                                         {% if country_code %}
                                             <i class="flag-icon flag-icon-{{ country_code }}"></i> {{ lang_name }}
                                         {% else %}
@@ -75,7 +75,7 @@
         <div class="container">
             <div class="row row-cols-1 row-cols-lg-3">
                 <div class="col">
-                    <p class="text-muted my-2" style="font-family: readex pro;">Copyright&nbsp;© 2023&nbsp;<span style="font-family: Urbanist, sans-serif;font-weight: bold;">Data Eden</span></p>
+                    <p class="text-muted my-2" style="">Copyright&nbsp;© 2023&nbsp;<span style="font-family: Urbanist, sans-serif;font-weight: bold;">Data Eden</span></p>
                 </div>
                 <div class="col">
                     <ul class="list-inline my-2">
@@ -110,8 +110,8 @@
                 </div>
                 <div class="col">
                     <ul class="list-inline my-2">
-                        <li class="list-inline-item"><a class="link-secondary" href='{% url "pages:privacyPolicy" %}' style="font-family: readex pro;">{% trans "Privacy Policy" %}</a></li>
-                        <li class="list-inline-item" style="font-family: readex pro;"><a class="link-secondary" href='{% url "pages:privacyPolicy" %}' style="font-family: readex pro;">{% trans "Terms of Use" %}</a></li>
+                        <li class="list-inline-item"><a class="link-secondary" href='{% url "pages:privacyPolicy" %}' style="">{% trans "Privacy Policy" %}</a></li>
+                        <li class="list-inline-item" style=""><a class="link-secondary" href='{% url "pages:privacyPolicy" %}' style="">{% trans "Terms of Use" %}</a></li>
                     </ul>
                 </div>
             </div>
