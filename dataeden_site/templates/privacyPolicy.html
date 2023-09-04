@@ -74,67 +74,116 @@
                 </div>
                 <div class="col">
                     <p style="font-family: readex pro;">
-                    {% blocktrans trimmed %}
-                    <span id="privPol">In our Privacy Policy</span> we describe how we process and handle the data 
-                    provided in relation to your use of our products, services, applications 
-                    and sites linked to this policy (we refer to them collectively as our 
-                    &quot;(services)&quot;). We may revise this policy from time to time. Review it 
-                    occasionally to stay up to date on our most current practices. We will place 
-                    the date of the 'Last Updated' at the top of each policy. If you disagree 
-                    with such an update to this policy, you may cancel your account of services. 
-                    If you do not cancel your account before the date the update takes effect, 
-                    your continued use of our services will be subject to the updated Privacy 
-                    Policy.<br><br><span id="dataTreat">We and our service providers</span> need to collect certain 
-                    information about you to provide our services, respond to your requests and 
-                    manage your account with us.<br><br> • <span id="accInfo"><b>Account Information.</b></span> Some 
-                    services require or allow you to create an account before you can access 
-                    them. As part of registering an account, we may collect information such as 
-                    your name, username, email address, password, and some other information 
-                    about you, including, if applicable, your Circle account and login 
-                    information. For our identity protection products, we will also ask for your 
-                    CPF number and other information.<br><br> • <span id="payment"><b>Billing &amp; Payment 
-                    Information.</b></span> To purchase a service, you may need to provide us with some 
-                    details, such as billing name, billing contact details (addresses, email 
-                    addresses) and payment instrument details.<br><br> • <span id="idVer"><b>Identity 
-                    Verification Information.</b></span> Some services require you to verify your 
-                    identity as part of creating an account. We may collect information such as 
-                    email addresses or phone numbers for this purpose.<br><br> • <span id="communications"><b> 
-                    Communications and Submissions.</b></span> You may choose to provide us with 
-                    voluntary information when communicating with us (for example, by email, 
-                    phone or chat for support or to inquire about our services), including by 
-                    filling out an online form, responding to surveys, providing feedback, 
-                    posting comments on our site, participating in promotions, participating in 
-                    forums, sites and related information services to share your experiences or 
-                    discuss technical issues or submit information through our services.<br><br> 
-                    • <span id="docs"><b>Camera, photos.</b></span> You may choose to provide us with images and other 
-                    camera information and photos from your device to allow us to provide the 
-                    services. For example, you can provide us with a photo of your driver's 
-                    license to monitor your driver's license number. <br> • <b>Documents.</b> You 
-                    may choose to upload documents and other files to our services stored on 
-                    your device.<br><br><span id="telemetry">In order to continuously improve</span> the service levels we 
-                    provide, we automatically collect information about the use of our services 
-                    to monitor problems and look for opportunities to make improvements. Some of 
-                    this information is collected using cookies and technologies <br>As part of 
-                    our services, we may receive information about you from third parties. We 
-                    take the same level of precaution and transparency of use that we provide 
-                    for the information you provide us directly.<br><br> • <b>References.</b> If 
-                    you are invited to use a Data Eden service, the person who invited you may "  
-                    send us information about you, such as your email address or other contact 
-                    information.<br><br> • <span id="thirdParties"><b>Third party accounts.</b></span> Some services may allow 
-                    you to register an account using a third party account (such as a Google or 
-                    Microsoft account) and, in some cases, you may register third party accounts 
-                    such as bank accounts or social media accounts with us. If you do this, this 
-                    third party may send us some information about you that they have. You can 
-                    control what information they send us through your privacy settings for that 
-                    third party account.<br><br> • <b>Threat information.</b> We receive 
-                    information from reputable members of the security industry who provide 
-                    information to help us provide, develop, test and improve our services (for 
-                    example, lists of malicious URLs, spam blacklists, blacklists of phone 
-                    numbers and malware samples). Some of this information may contain 
-                    incidental personal data.</p><br><br><br><br>
-                    <span id="cookies"><h3><b>Tracking technologies and 
-                    cookies</h3></b></span> <br>
-                    <p style="font-family: readex pro;">We use Cookies and similar tracking technologies to 
+                        {% blocktrans trimmed %}
+                        <span id="privPol">In our Privacy Policy</span> we describe how we process and handle the data 
+                        provided in relation to your use of our products, services, applications 
+                        and sites linked to this policy (we refer to them collectively as our 
+                        &quot;(services)&quot;). We may revise this policy from time to time. Review it 
+                        occasionally to stay up to date on our most current practices. We will place 
+                        the date of the 'Last Updated' at the top of each policy. If you disagree 
+                        with such an update to this policy, you may cancel your account of services. 
+                        If you do not cancel your account before the date the update takes effect, 
+                        your continued use of our services will be subject to the updated Privacy 
+                        Policy.
+                        {% endblocktrans %}
+                    </p>
+                    <p>
+                        {% blocktrans trimmed %}
+                        <span id="dataTreat">We and our service providers</span> need to collect certain 
+                        information about you to provide our services, respond to your requests and 
+                        manage your account with us.
+                        {% endblocktrans %}
+                    </p> 
+                    <p>
+                        • {% blocktrans trimmed %}<span id="accInfo"><b>Account Information.</b></span> Some 
+                        services require or allow you to create an account before you can access 
+                        them. As part of registering an account, we may collect information such as 
+                        your name, username, email address, password, and some other information 
+                        about you, including, if applicable, your Circle account and login 
+                        information. For our identity protection products, we will also ask for your 
+                        CPF number and other information.
+                        {% endblocktrans %}
+                    </p> 
+                    <p>
+                        • {% blocktrans trimmed %}<span id="payment"><b>Billing &amp; Payment 
+                        Information.</b></span> To purchase a service, you may need to provide us with some 
+                        details, such as billing name, billing contact details (addresses, email 
+                        addresses) and payment instrument details.
+                        {% endblocktrans %}
+                    </p> 
+                    <p>
+                        {% blocktrans trimmed %}
+                        • <span id="idVer"><b>Identity 
+                        Verification Information.</b></span> Some services require you to verify your 
+                        identity as part of creating an account. We may collect information such as 
+                        email addresses or phone numbers for this purpose.
+                        {% endblocktrans %}
+                    </p> 
+                    <p>
+                        • {% blocktrans trimmed %}<span id="communications"><b> 
+                        Communications and Submissions.</b></span> You may choose to provide us with 
+                        voluntary information when communicating with us (for example, by email, 
+                        phone or chat for support or to inquire about our services), including by 
+                        filling out an online form, responding to surveys, providing feedback, 
+                        posting comments on our site, participating in promotions, participating in 
+                        forums, sites and related information services to share your experiences or 
+                        discuss technical issues or submit information through our services.
+                        {% endblocktrans %}
+                    </p>
+                    <p>
+                        
+                        • {% blocktrans trimmed %}<span id="docs"><b>Camera, photos.</b></span> You may choose to provide us with images and other 
+                        camera information and photos from your device to allow us to provide the 
+                        services. For example, you can provide us with a photo of your driver's 
+                        license to monitor your driver's license number.
+                        {% endblocktrans %}
+                    </p> 
+                    <p>
+                        • {% blocktrans trimmed %}<b>Documents.</b> You 
+                        may choose to upload documents and other files to our services stored on 
+                        your device.
+                        {% endblocktrans %}
+                    </p>
+                    <p>
+                        {% blocktrans trimmed %}<span id="telemetry">In order to continuously improve</span> the service levels we 
+                        provide, we automatically collect information about the use of our services 
+                        to monitor problems and look for opportunities to make improvements. Some of 
+                        this information is collected using cookies and technologies <br>As part of 
+                        our services, we may receive information about you from third parties. We 
+                        take the same level of precaution and transparency of use that we provide 
+                        for the information you provide us directly.
+                        {% endblocktrans %}
+                    </p> 
+                    <p>
+                        • {% blocktrans trimmed %}<b>References.</b> If 
+                        you are invited to use a Data Eden service, the person who invited you may "  
+                        send us information about you, such as your email address or other contact 
+                        information.
+                        {% endblocktrans %}
+                    </p> 
+                    <p>
+                        • {% blocktrans trimmed %}<span id="thirdParties"><b>Third party accounts.</b></span> Some services may allow 
+                        you to register an account using a third party account (such as a Google or 
+                        Microsoft account) and, in some cases, you may register third party accounts 
+                        such as bank accounts or social media accounts with us. If you do this, this 
+                        third party may send us some information about you that they have. You can 
+                        control what information they send us through your privacy settings for that 
+                        third party account.
+                        {% endblocktrans %}
+                    </p> 
+                    <p>
+                        • {% blocktrans trimmed %}<b>Threat information.</b> We receive 
+                        information from reputable members of the security industry who provide 
+                        information to help us provide, develop, test and improve our services (for 
+                        example, lists of malicious URLs, spam blacklists, blacklists of phone 
+                        numbers and malware samples). Some of this information may contain 
+                        incidental personal data.
+                        {% endblocktrans %}
+                    </p>
+                    <br><br>
+                    <span id="cookies"><h3><b>{% trans "Tracking technologies and cookies" %}</b></h3>
+                    </span><br><p style="font-family: readex pro;">
+                    {% blocktrans trimmed %}We use Cookies and similar tracking technologies to 
                     track activity on Our Service and store certain information. The tracking 
                     technologies used are beacons, tags and scripts to collect and track 
                     information and to improve and analyze Our Service. The technologies we use 
@@ -211,14 +260,14 @@
                     personal information or otherwise interact in the public areas with other 
                     users, such information may be viewed by all users and may be publicly 
                     distributed outside.<br><br> • With Your consent: We may disclose Your 
-                    personal information for any other purpose with Your consent.<br><br><br><br>
-                    <span id="dataControl"><b>Retention of Your Personal Data</b></span><br><br>The Company will retain Your 
-                    Personal Data only for as long as is necessary for the purposes set out in 
-                    this Privacy Policy. We will retain and use Your Personal Data to the extent 
-                    necessary to comply with our legal obligations (for example, if we are 
-                    required to retain your data to comply with applicable laws), resolve 
-                    disputes and enforce our legal agreements and policies.<br><br>The Company 
-                    will also retain Usage Data for internal analysis purposes. Usage Data is 
+                    personal information for any other purpose with Your consent.<br><br></p>
+                    <p><span id="dataControl"><b>Retention of Your Personal Data</b></span><br><br>
+                    The Company will retain Your Personal Data only for as long as is necessary 
+                    for the purposes set out in this Privacy Policy. We will retain and use Your 
+                    Personal Data to the extent necessary to comply with our legal obligations 
+                    (for example, if we are required to retain your data to comply with applicable 
+                    laws), resolve disputes and enforce our legal agreements and policies.<br><br>
+                    The Company will also retain Usage Data for internal analysis purposes. Usage Data is 
                     generally retained for a shorter period of time, except when this data is 
                     used to strengthen security or to improve the functionality of Our Service, 
                     or We are legally obligated to retain this data for longer periods of 
@@ -235,8 +284,9 @@
                     accordance with this Privacy Policy and no transfer of Your Personal Data 
                     will take place to an organization or a country unless there are adequate 
                     controls in place including the security of Your data and other personal 
-                    information.</p><br><br><br><br><br><br><br><br><br><br>
+                    information.
                     {% endblocktrans %}
+                    </p><br><br><br><br><br><br><br><br><br><br>
                 </div>
             </div>
         </div>
