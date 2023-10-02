@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import EmailAddress, ContactModel
+from .models import EmailAddress, ContactModel, Lead
 
 # Register your models here.
 
@@ -11,3 +11,5 @@ class EmailModelAdmin(admin.ModelAdmin):
 
 admin.site.register(EmailAddress, EmailModelAdmin)
 admin.site.register(ContactModel, ContactModelAdmin)
+admin.site.register(Lead)
+

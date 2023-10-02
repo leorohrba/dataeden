@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from base64 import b64decode
 from django.utils.translation import gettext_lazy as _
 # from django.core.cache.backends.memcached import MemcachedCache
 # from django_ratelimit import RateLimitMiddleware
@@ -25,13 +26,19 @@ PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-b9xk&q#0o9^so2zjb&mqhhc4pnqnhqt5tu*5t&ic401kue%#7)'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '')
+# SECRET_KEY = 'django-insecure-b9xk&q#0o9^so2zjb&mqhhc4pnqnhqt5tu*5t&ic401kue%#7)'
 
-ENCRYPTION_KEY = b'R_vUYsaQQkyR7GK8updBtHSq3MNM9rilsVCZPblc6YI='
+ENCRYPTION_KEY = b64decode(os.environ.get('DJANGO_ENCRYPT_KEY', ''))
+# ENCRYPTION_KEY = os.environ.get('DJANGO_ENCRYPT_KEY', '').bytes()
+# ENCRYPTION_KEY = b'R_vUYsaQQkyR7GK8updBtHSq3MNM9rilsVCZPblc6YI='
 
-# SECRET_KEY = 'your_secret_key'
+DB_USER = os.environ.get('POSTGRES_USER', '')
+DB_PASSWORD = os.environ.get('POSTGRES_PASSWORD', '')
+print("DB_USER:", DB_USER)
+print("\nDB_PASSWORD:", DB_PASSWORD)
 
-# PGCRYPTO_KEY = 'your_encryption_key'
+REDIS_HOST = os.getenv("DJANGO_REDIS_HOST", "localhost")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False
@@ -61,27 +68,11 @@ USE_TZ = True
 
 STATIC_URL = '/staticfiles/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_media/')
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'staticfiles'),
-#     # os.path.join(BASE_DIR, 'admin'),
-# ]
+
 STATICFILES_DIRS = [
-    # os.path.join(BASE_DIR, 'static').replace("\\", "/"),
     os.path.join(BASE_DIR, 'staticfiles').replace("\\", "/"),
     os.path.join(BASE_DIR, 'static_media').replace("\\", "/"),
-    # os.path.join(BASE_DIR, 'staticfiles'),
-    # os.path.join(BASE_DIR, 'staticfiles/css'),
 ]
-
-# CACHES = {
-#     'default': {
-#         # 'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-#         'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
-#         # 'LOCATION': '127.0.0.1:11211',  # Use the service name from docker-compose.yml
-#         'LOCATION': 'memcached:11211',  # Use the service name from docker-compose.yml
-#     },
-#     'cache-for-ratelimiting': {},
-# }
 
 # COMPRESS_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 COMPRESS_ROOT = os.path.join(BASE_DIR, 'static_media/CACHE/')
@@ -90,18 +81,12 @@ COMPRESS_URL = STATIC_URL
 
 COMPRESS_OUTPUT_DIR = COMPRESS_ROOT
 
-
-# COMPRESS_URL = '/staticfiles/CACHE/'
-# COMPRESS_URL = '/static/'
-
-# COMPRESS_ROOT = STATIC_ROOT
-# COMPRESS_URL = STATIC_URL
-
 CACHES = {
     "default": {
         # "BACKEND": "django.core.cache.backends.redis.RedisCache",
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://redis:6379/1",  # Use the service name from docker-compose.yml
+        # "LOCATION": "redis://redis:6379/1",  # Use the service name from docker-compose.yml
+        "LOCATION": f"redis://{REDIS_HOST}:6379/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
@@ -111,10 +96,6 @@ CACHES = {
 COMPRESS_OFFLINE = True
 
 # RATELIMIT_USE_CACHE = 'cache-for-ratelimiting'
-
-# SESSIONS_ENGINE='django.contrib.sessions.backends.cache'
-# SESSION_ENGINE = 'django.contrib.sessions.backends.db'
-# SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 SESSION_CACHE_ALIAS = 'default'
@@ -273,7 +254,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'dataeden_site.wsgi.application'
 
-ALLOWED_HOSTS = ['localhost', 'db', '127.0.0.0', '127.0.0.1', '172.18.0.2', '172.18.0.3', '0.0.0.0']
+# ALLOWED_HOSTS = ['localhost', 'db', '127.0.0.0', '127.0.0.1', '172.18.0.2', '172.18.0.3', '0.0.0.0']
+ALLOWED_HOSTS = ['*']
 
 LOGGING = {
     'version': 1,
@@ -283,6 +265,9 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'filename': 'debug.log',
+        },
+        'console': {
+            'class': 'logging.StreamHandler',
         },
     },
     'loggers': {
@@ -304,8 +289,10 @@ DATABASES = {
     'default': {
         "ENGINE": "django.db.backends.postgresql",
         'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'dataeden',
+        'USER': DB_USER,
+        # 'USER': os.environ.get('DB_USER', 'postgres'),
+        'PASSWORD': DB_PASSWORD,
+        # 'PASSWORD': os.environ.get('DB_PASSWORD', ''),
         # 'USER': os.environ.get('POSTGRES_USER'),
         # "HOST": "11.23.34.2",  # set in docker-compose.yml
         "PORT": 5432,  # default postgres port
@@ -321,7 +308,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'noreply.dataeden@gmail.com'
-EMAIL_HOST_PASSWORD = 'wcngloezexdnsjge'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 

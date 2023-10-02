@@ -11,16 +11,25 @@ from django.template.defaultfilters import mark_safe
 from django.utils.translation import activate
 from django.urls import reverse
 from django.template.loader import get_template
+from django.contrib.auth.models import User
 
 # from django.conf import HOST_EMAIL_USER
 from django.conf import settings
 
 from cryptography.fernet import Fernet
 # from django_cryptography.fields import EncryptedTextField
-from django_cryptography.fields import encrypt
+# from django_cryptography.fields import encrypt
 # sensitive_data = encrypt(models.CharField(max_length=50))
 
 # Create your models here.
+
+class Lead(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100, unique=True)
+    details = models.CharField(max_length=500, blank=True)
+    owner = models.ForeignKey(
+        User, related_name="leads", on_delete=models.CASCADE, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 class LanguageManager(models.Manager):
     def activate_language(request):

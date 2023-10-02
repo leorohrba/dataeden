@@ -21,7 +21,7 @@
                             </div>
                         </div>
                         <div class="col mx-auto" style="padding: 0;">
-                            <h4 class="mb-0 text-start" style="font-family: readex pro;font-size: 30px;">
+                            <h4 class="mb-0 text-start" style="font-family: readex-pro;font-size: 30px;">
                                 {% trans "About us" %}
                                 <!-- Sobre nós -->
                             </h4>
@@ -30,7 +30,7 @@
                     <div class="row" style="margin: 0px;">
                         <div class="col text-start">
                             <div id="paragrafo">
-                                <p style="font-family: readex pro;margin: 16px;margin-top: 16px;font-size: 16px;">
+                                <p style="font-family: readex-pro;margin: 16px;margin-top: 16px;font-size: 16px;">
                                     {% trans "Data Eden is a company inspired and dedicated to protecting personal information of citizens and sensitive corporate data. Here, we acknowledge the importance of privacy and security of information given the highly connected and data-driven world we live in That is why our we made it our mission to be the first line of defense against the undue exploration of your personal data by data brokers, who collect and commercialize customers data, often without the consent - or even the knowledge - of the affected users." %}
                                     <!-- Data Eden is a company inspired and 
                                     dedicated to protecting personal information of citizens and sensitive 
@@ -55,7 +55,7 @@
 </section>
 <hr class="my-4 mx-4 my-md-5 mx-md-5">
 <section id="valores">
-    <h2 class="my-5 text-center" style="font-family: readex pro;">
+    <h2 class="my-5 text-center" style="font-family: readex-pro;">
         {% trans "Our core values" %}
         <!-- Nossos valores -->
     </h2>
@@ -64,7 +64,7 @@
             <div class="accordion my-5" role="tablist" id="accordion-1" style="margin-top: 0px!important;">
                 <div class="accordion-item" style="border-bottom-left-radius: 16px;border-bottom-right-radius: 16px;border-top-left-radius: 16px;border-top-right-radius: 16px">
                     <h2 class="accordion-header" role="tab">
-                        <button class="accordion-button rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-1" aria-expanded="true" aria-controls="accordion-1 .item-1" style="background: rgb(80,176,73);font-family: readex pro;font-size: 22px;font-weight: bold;">
+                        <button class="accordion-button rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-1" aria-expanded="true" aria-controls="accordion-1 .item-1" style="background: rgb(80,176,73);font-family: readex-pro;font-size: 22px;font-weight: bold;">
                             <span class="w-100" style="color: #50b049;">
                                 <div class="row w-100 align-items-center align-text-start">
                                     <div class="col-auto px-0 w-auto">
@@ -72,9 +72,11 @@
                                             <img src="{% static 'img/lock_white.svg' %}" width="21" height="22">
                                         </div>
                                     </div> 
-                                    <div class="col gx-0 px-0" style="color: white;" style="font-family: readex pro; font-size: 18px;">
-                                        {% trans "Confidentiality" %}
-                                        <!-- Confidencialidade -->
+                                    <div class="col gx-0 px-0" style="color: white;" style="font-family: readex-pro; font-size: 18px;">
+                                        <h4 class="mb-0" style="font-family: readex-pro;">
+                                            {% trans "Confidentiality" %}
+                                        </h4>
+                                            <!-- Confidencialidade -->
                                     </div>
                                 </div>
                             </span>
@@ -82,7 +84,7 @@
                     </h2>
                     <div class="accordion-collapse collapse show item-1" role="tabpanel" data-bs-parent="#accordion-1">
                         <div class="accordion-body">
-                            <p class="mb-0" style="font-family: readex pro; font-size: 14px;">
+                            <p class="mb-0" style="font-family: readex-pro; font-size: 14px;">
                                 {% blocktrans trimmed %}
                                 At Data Eden, confidentiality is an unwavering pillar that guides our every action. We know that trusting your personal information big companies is a delicate decision, and that's why we are commited to preserving your freedom and the choices you make online, by preventing unlawful use of your data. To achieve this, we have adopted rigorous and advanced measures that go beyond industry standards, always keeping up with the latest trends and advances against the most recent threats in the digital scenario.
                                 {% endblocktrans %}
@@ -107,7 +109,7 @@
             <div class="accordion my-5" role="tablist" id="accordion-2">
                 <div class="accordion-item" style="border-bottom-left-radius: 16px;border-bottom-right-radius: 16px;border-top-left-radius: 16px;border-top-right-radius: 16px">
                     <h2 class="accordion-header" role="tab">
-                        <button class="accordion-button rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-2 .item-2" aria-expanded="true" aria-controls="accordion-2 .item-2" style="background: rgb(80,176,73);font-family: readex pro;font-size: 22px;font-weight: bold;">
+                        <button class="accordion-button rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-2 .item-2" aria-expanded="true" aria-controls="accordion-2 .item-2" style="background: rgb(80,176,73);font-family: readex-pro;font-size: 22px;font-weight: bold;">
                             <span class="w-100" style="color: #50b049;;">
                                 <div class="row w-100 align-items-center align-text-start">
                                     <div class="col-auto px-0 w-auto">
@@ -115,8 +117,10 @@
                                             <img src="{% static 'img/1st-medal_alt.svg' %}" width="21" height="22">
                                         </div>
                                     </div>
-                                    <div class="col gx-0 px-0" style="color: white;" style="font-family: readex pro; font-size: 18px;">
-                                        {% trans "Competence" %}
+                                    <div class="col gx-0 px-0" style="color: white;" style="font-family: readex-pro; font-size: 18px;">
+                                        <h4 class="mb-0" style="font-family: readex-pro;">
+                                            {% trans "Competence" %}
+                                        </h4>
                                         <!-- Competência -->
                                     </div>
                                 </div>
@@ -125,7 +129,7 @@
                     </h2>
                     <div class="accordion-collapse collapse show item-2" role="tabpanel" data-bs-parent="#accordion-2">
                         <div class="accordion-body">
-                            <p class="mb-0" style="font-family: readex pro; font-size: 14px;">
+                            <p class="mb-0" style="font-family: readex-pro; font-size: 14px;">
                                 {% blocktrans trimmed %}Ensuring the security of your personal data is our top priority here at Data Eden. Every employee is dedicated and committed to ensuring that your data remains safe against any potential threat. We are always ready to assist you with any request related to the privacy of your data, as we understand that every detail matters to ensure your peace of mind. We emphasize that all our activities are conducted in strict compliance with the applicable data protection regulations and laws in any country. The seriousness with which we treat the protection of your information is a reflection of our commitment to preserving the correct use of your personal data.{% endblocktrans %}
                                 <!-- Ensuring the security of your personal data 
                                 is our top priority here at Data Eden. Every employee is dedicated and 
@@ -153,7 +157,7 @@
             <div class="accordion my-5 mb-0" role="tablist" id="accordion-3">
                 <div class="accordion-item" style="border-bottom-left-radius: 16px;border-bottom-right-radius: 16px;border-top-left-radius: 16px;border-top-right-radius: 16px">
                     <h2 class="accordion-header" role="tab">
-                        <button class="accordion-button rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-3 .item-3" aria-expanded="true" aria-controls="accordion-3 .item-3" style="background: rgb(80,176,73);font-size: 22px;font-family: readex pro;font-weight: bold;">
+                        <button class="accordion-button rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-3 .item-3" aria-expanded="true" aria-controls="accordion-3 .item-3" style="background: rgb(80,176,73);font-size: 22px;font-family: readex-pro;font-weight: bold;">
                             <span class="w-100" style="color: #50b049;">
                                 <div class="row w-100 align-items-center align-text-start">
                                     <div class="col-auto px-0 w-auto">
@@ -161,8 +165,10 @@
                                             <img src="{% static 'img/community.svg' %}" width="25" height="25">
                                         </div>
                                     </div>
-                                    <div class="col gx-0 px-0" style="color: white;" style="font-family: readex pro; font-size: 18px;">
-                                        {% trans "Transparency" %}
+                                    <div class="col gx-0 px-0" style="color: white;" style="font-family: readex-pro; font-size: 18px;">
+                                        <h4 class="mb-0" style="font-family: readex-pro;">
+                                            {% trans "Transparency" %}
+                                        </h4>
                                         <!-- Transparência -->
                                     </div>
                                 </div>
@@ -171,7 +177,7 @@
                     </h2>
                     <div class="accordion-collapse collapse show item-3" role="tabpanel" data-bs-parent="#accordion-3">
                         <div class="accordion-body">
-                            <p class="mb-0" style="font-family: readex pro; font-size: 14px;">
+                            <p class="mb-0" style="font-family: readex-pro; font-size: 14px;">
                                 {% blocktrans trimmed %}
                                 Transparency is more than an idea for us - It is a fundamental value that permeates and shows itself in all aspects of our services. Our goal is for our customers to feel empowered and safe when choosing us, knowing that we are committed to protecting their information in an ethical, responsible and transparent way, so that we can build a solid and lasting relationship of trust.
                                 {% endblocktrans %}

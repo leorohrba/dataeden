@@ -6,8 +6,8 @@
         <div id="contact" class="container position-relative">
             <div class="row" style="margin-bottom: 0px;display: block;overflow: visible;">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
-                    <h2 style="font-family: readex pro;font-size: 32px;">{% trans "Contact us" %}</h2>
-                    <p class="w-lg-50" style="font-family: readex pro;">{% trans "We are happy to offer help and respond any questions!" %}</p>
+                    <h2 style="font-family: readex-pro;font-size: 32px;">{% trans "Contact us" %}</h2>
+                    <p class="w-lg-50" style="font-family: readex-pro;">{% trans "We are happy to offer help and respond any questions!" %}</p>
                 </div>
             </div>
             <div class="row d-flex justify-content-center">
@@ -19,8 +19,8 @@
                                 </svg>
                             </div>
                             <div class="px-2">
-                                <h6 class="mb-0" style="font-family: readex pro;">Email</h6>
-                                <p class="mb-0" style="font-family: readex pro;">contact@dataeden.co</p>
+                                <h6 class="mb-0" style="font-family: readex-pro;">Email</h6>
+                                <p class="mb-0" style="font-family: readex-pro;">contact@dataeden.co</p>
                             </div>
                         </div>
                         <form class="col-11 col-sm-10 col-xl-8 p-1 p-md-4 justify-content-center" method="post" action="{% url 'pages:contact' %}" name="contact_form" enctype="multipart/form-data">
@@ -50,11 +50,11 @@
                             {% endif %}
                             {% csrf_token %}
                             {{ form.path }}
-                            <div class="mb-3"><input class="form-control" placeholder="{% trans 'Name' %}" type="text" id="name-1" name="name" style="font-family: readex pro;"></div>
-                            <div class="mb-3"><input class="form-control" placeholder="{% trans 'Email' %}" type="email" id="email-1" name="email" style="font-family: readex pro;"></div>
-                            <div class="mb-3"><input class="form-control" placeholder="{% trans 'Subject' %}" type="text" id="subject-1" name="subject" style="font-family: readex pro;"></div>
-                            <div class="mb-3"><textarea class="form-control" placeholder="{% trans 'Message' %}" id="message-1" name="message" rows="6" style="font-family: readex pro;"></textarea></div>
-                            <div><button class="btn btn-primary d-block w-100" type="submit" style="font-family: readex pro;">{% trans "Send" %}</button></div>
+                            <div class="mb-3"><input class="form-control" placeholder="{% trans 'Name' %}" type="text" id="name-1" name="name" style="font-family: readex-pro;"></div>
+                            <div class="mb-3"><input class="form-control" placeholder="{% trans 'Email' %}" type="email" id="email-1" name="email" style="font-family: readex-pro;"></div>
+                            <div class="mb-3"><input class="form-control" placeholder="{% trans 'Subject' %}" type="text" id="subject-1" name="subject" style="font-family: readex-pro;"></div>
+                            <div class="mb-3"><textarea class="form-control" placeholder="{% trans 'Message' %}" id="message-1" name="message" rows="6" style="font-family: readex-pro;"></textarea></div>
+                            <div><button class="btn btn-primary d-block w-100" type="submit" style="font-family: readex-pro;">{% trans "Send" %}</button></div>
                         </form>
                     </div>
                 </div>
